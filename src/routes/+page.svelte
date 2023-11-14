@@ -24,6 +24,7 @@
 	export let data: PageData;
 
 	const { form } = superForm(data.form);
+	console.log(data.webinars);
 </script>
 
 <svelte:head>
