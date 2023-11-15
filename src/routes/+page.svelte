@@ -2,8 +2,10 @@
 	import Webinar from '$lib/webinars/Webinar.svelte';
 	import type { PageData } from './$types';
 
-	let modalWebinarData: any = {};
 	export let data: PageData;
+	data.webinars.sort((a, b) => new Date(a.date_time) - new Date(b.date_time));
+
+	console.log(data);
 </script>
 
 <svelte:head>

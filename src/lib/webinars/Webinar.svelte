@@ -11,7 +11,6 @@
 	export let formData: any;
 	export let webinarData: webinarData;
 
-	const dispatch = createEventDispatcher();
 	const borderColor: any = {
 		ft: 'border-l-plava',
 		mps: 'border-l-zuta',
@@ -33,7 +32,6 @@
 	let dateCard: webinarTypes;
 	let isOpen = false;
 
-	console.log(webinarData);
 	onMount(() => {
 		itemsCloseCallback.push(close);
 		if (webinarData.name.startsWith('[B')) {
