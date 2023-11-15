@@ -22,7 +22,6 @@
 	};
 
 	export let data: PageData;
-
 	const { form } = superForm(data.form);
 </script>
 

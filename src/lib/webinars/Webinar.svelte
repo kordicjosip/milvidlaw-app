@@ -24,8 +24,6 @@
 <div
 	class="flex flex-col justify-around rounded-md w-[35rem] h-32 bg-white border-l-[6px] {webinarType} border border-neutral-400"
 >
-	<div class="text-[0.6rem] ml-4">Upcoming Webinar</div>
-
 	<div class="flex items-center justify-between mx-4 gap-4">
 		<div>
 			<div
@@ -34,8 +32,11 @@
 				<span>NOV</span><span class="font-extrabold tracking-widest text-cyan-700">15</span>
 			</div>
 		</div>
-		<div class="flex flex-col gap-2">
-			<div class="text-lg font-medium leading-5">{webinarData.name}</div>
+		<div class="flex flex-col gap-1">
+			<div class="text-sm">{webinarData.name.split(' ')[0]}</div>
+			<div class="text-lg font-medium leading-5">
+				{webinarData.name.split(' ').slice(1).join(' ')}
+			</div>
 			<div class="text-sm flex items-center gap-1">
 				<span>
 					<svg
@@ -54,7 +55,7 @@
 						/>
 					</svg>
 				</span>
-				<span class="text-xs">{webinarData.time} Jersey City</span>
+				<span class="text-xs">{webinarData.date_time}</span>
 			</div>
 		</div>
 		<div>
