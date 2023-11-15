@@ -4,9 +4,9 @@
 	const dispatch = createEventDispatcher();
 	export let webinarType: webinarTypes;
 	const borderColor: any = {
-		ft: 'border-l-cyan-600',
-		mps: 'border-l-emerald-500',
-		htapg: 'border-l-indigo-400'
+		ft: 'border-l-plava',
+		mps: 'border-l-zuta',
+		htapg: 'border-l-zelena'
 	};
 
 	export let webinarData: webinarData;
