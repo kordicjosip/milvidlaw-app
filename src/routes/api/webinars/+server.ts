@@ -1,30 +1,11 @@
-import { pool } from '$lib/db';
-import type { webinarData } from '$lib/shared';
+import { mysqlconnFn, mysqlconnPool } from '$lib/db/mysql';
 
 export async function GET() {
-	const response = await pool
-		.request()
-		.query(
-			`
-        SELECT *
-        FROM webinars
-		`
-		)
-		.then((result) => {
-			return result.recordset;
-		});
+	let mysqlconn = await mysqlconnPool();
 
-	const webinars: webinarData[] = [];
-
-	for (let row of response) {
-		webinars.push({
-			id: row.id,
-			scheduleId: row.schedule,
-			time: row.date_time,
-			name: row.name,
-			lastUpdated: row.updated
-		});
-	}
-
-	return new Response(JSON.stringify(webinars));
+	let results = await mysqlconn.query('SELECT * FROM webinars').then(function ([rows, fields]) {
+		console.log(rows);
+		return rows;
+	});
+	return new Response(JSON.stringify(results));
 }
