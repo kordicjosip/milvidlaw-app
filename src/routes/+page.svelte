@@ -32,9 +32,9 @@
 	<meta name="Description" content="New Jersey Elder Law & Estate Planning Attorney" />
 </svelte:head>
 <div class="flex flex-col gap-5 w-full items-center">
-	<Webinar webinarType={webinarTypes.ft} {webinarData} on:showModal={showModalHandler} />
-	<Webinar webinarType={webinarTypes.htapg} {webinarData} on:showModal={showModalHandler} />
-	<Webinar webinarType={webinarTypes.mps} {webinarData} on:showModal={showModalHandler} />
+	{#each data.webinars as webinar}
+		<Webinar webinarType={webinarTypes.ft} webinarData={webinar} on:showModal={showModalHandler} />
+	{/each}
 </div>
 
 <Modal bind:showModal>
