@@ -64,7 +64,6 @@
 		month: 'short',
 		day: 'numeric'
 	});
-	console.log(dateCardDate);
 
 	onMount(() => {
 		itemsCloseCallback.push(close);
