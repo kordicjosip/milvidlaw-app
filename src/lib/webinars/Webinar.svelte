@@ -129,8 +129,10 @@
 		<div />
 		<div class="absolute right-0 top-0">
 			<button
-				class="flex w-40 items-center justify-center h-10 bg-red-600 hover:bg-red-500 rounded rounded-tl-none rounded-br-none text-white font-bold"
+				class="flex w-40 items-center justify-center h-10 rounded rounded-tl-none rounded-br-none text-white font-bold"
 				on:click={toggle}
+				class:bg-red-600={!isOpen}
+				class:hover:bg-red-500={!isOpen}
 				class:bg-neutral-400={isOpen}
 				class:hover:bg-neutral-500={isOpen}
 				aria-expanded={isOpen}
