@@ -1,8 +1,8 @@
 <script lang="ts">
 	import type { webinarTypes, webinarData } from '$lib/shared';
-	import { createEventDispatcher } from 'svelte';
+	import { createEventDispatcher, onMount } from 'svelte';
 	const dispatch = createEventDispatcher();
-	export let webinarType: webinarTypes;
+	let webinarType: webinarTypes;
 	const borderColor: any = {
 		ft: 'border-l-plava',
 		mps: 'border-l-zuta',
@@ -10,12 +10,19 @@
 	};
 
 	export let webinarData: webinarData;
+	onMount(() => {
+		if (webinarData.name.startsWith('[B')) {
+			webinarType = borderColor.ft;
+		} else if (webinarData.name.startsWith('[M')) {
+			webinarType = borderColor.mps;
+		} else if (webinarData.name.startsWith('[H')) {
+			webinarType = borderColor.htapg;
+		}
+	});
 </script>
 
 <div
-	class="flex flex-col justify-around rounded-md w-[35rem] h-32 bg-white border-l-[6px] {borderColor[
-		webinarType
-	]} border border-neutral-400"
+	class="flex flex-col justify-around rounded-md w-[35rem] h-32 bg-white border-l-[6px] {webinarType} border border-neutral-400"
 >
 	<div class="text-[0.6rem] ml-4">Upcoming Webinar</div>
 

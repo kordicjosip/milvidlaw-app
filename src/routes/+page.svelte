@@ -24,7 +24,6 @@
 	export let data: PageData;
 
 	const { form } = superForm(data.form);
-	console.log(data.webinars);
 </script>
 
 <svelte:head>
@@ -33,7 +32,7 @@
 </svelte:head>
 <div class="flex flex-col gap-5 w-full items-center">
 	{#each data.webinars as webinar}
-		<Webinar webinarType={webinarTypes.ft} webinarData={webinar} on:showModal={showModalHandler} />
+		<Webinar webinarData={webinar} on:showModal={showModalHandler} />
 	{/each}
 </div>
 
