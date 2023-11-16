@@ -4,7 +4,7 @@
 
 <script lang="ts">
 	import type { webinarTypes, webinarData } from '$lib/shared';
-	import { slide } from 'svelte/transition';
+	import { fade, blur, fly, slide, scale, draw, crossfade } from 'svelte/transition';
 	import { onMount, onDestroy } from 'svelte';
 	import { superForm } from 'sveltekit-superforms/client';
 
@@ -159,7 +159,7 @@
 		</div>
 	</div>
 	{#if isOpen}
-		<ul transition:slide={{ duration: 300 }} use:safariWorkaround>
+		<ul in:blur={{ duration: 300 }} use:safariWorkaround>
 			<div class="flex justify-center font-bold text-xl">Register for the Webinar</div>
 			<hr
 				class="mx-10 my-3"
