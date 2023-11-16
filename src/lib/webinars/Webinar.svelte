@@ -5,8 +5,15 @@
 <script lang="ts">
 	import type { webinarTypes, webinarData } from '$lib/shared';
 	import { slide } from 'svelte/transition';
-	import { createEventDispatcher, onMount, onDestroy } from 'svelte';
+	import { onMount, onDestroy } from 'svelte';
 	import { superForm } from 'sveltekit-superforms/client';
+
+	//Svelte slide buggy on Safari
+	function safariWorkaround(node) {
+		if (navigator.appVersion.includes('Safari')) {
+			node.style.overflow = 'hidden';
+		}
+	}
 
 	export let formData: any;
 	export let webinarData: webinarData;
@@ -152,7 +159,7 @@
 		</div>
 	</div>
 	{#if isOpen}
-		<ul transition:slide={{ duration: 300 }}>
+		<ul transition:slide={{ duration: 300 }} use:safariWorkaround>
 			<div class="flex justify-center font-bold text-xl">Register for the Webinar</div>
 			<hr
 				class="mx-10 my-3"
