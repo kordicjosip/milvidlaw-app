@@ -6,7 +6,6 @@
 	import type { webinarTypes, webinarData } from '$lib/shared';
 	import { fade, blur, fly, slide, scale, draw, crossfade } from 'svelte/transition';
 	import { onMount, onDestroy } from 'svelte';
-	import { superForm } from 'sveltekit-superforms/client';
 
 	//Svelte slide buggy on Safari
 	function safariWorkaround(node) {
@@ -15,7 +14,6 @@
 		}
 	}
 
-	export let formData: any;
 	export let webinarData: webinarData;
 
 	const borderColor: any = {
@@ -33,7 +31,6 @@
 		isOpen = !isOpen;
 	};
 	const close = () => (isOpen = false);
-	const { form } = superForm(formData.form);
 
 	let webinarType: webinarTypes;
 	let dateCard: webinarTypes;
@@ -185,7 +182,6 @@
 						type="text"
 						name="name"
 						placeholder="*First Name"
-						bind:value={$form.firstName}
 					/>
 
 					<input
@@ -193,7 +189,6 @@
 						type="text"
 						name="name"
 						placeholder="*Last Name"
-						bind:value={$form.lastName}
 					/>
 
 					<input
@@ -201,7 +196,6 @@
 						type="email"
 						name="email"
 						placeholder="*E-mail"
-						bind:value={$form.email}
 					/>
 
 					<input
@@ -209,7 +203,6 @@
 						type="email"
 						name="email"
 						placeholder="Phone (optional)"
-						bind:value={$form.phone}
 					/>
 				</div>
 				<div class="flex w-full justify-center my-3">
