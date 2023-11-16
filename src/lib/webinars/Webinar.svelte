@@ -69,6 +69,18 @@
 		day: 'numeric'
 	});
 
+	let everWebinarResponse: any;
+	async function submitRegistration() {
+		const res = await fetch('APIURL', {
+			method: 'POST',
+			body: JSON.stringify(webinarData.name)
+		});
+
+		const json = await res.json();
+		everWebinarResponse = JSON.stringify(json);
+		console.log(everWebinarResponse);
+	}
+
 	onMount(() => {
 		itemsCloseCallback.push(close);
 		if (webinarData.name.startsWith('[B')) {
@@ -208,7 +220,7 @@
 				<div class="flex w-full justify-center my-3">
 					<button
 						class="lg:w-24 lg:h-10 w-[5.5rem] h-9 bg-red-600 hover:bg-red-500 rounded text-white font-bold mb-8"
-						>SUBMIT</button
+						on:click={submitRegistration}>SUBMIT</button
 					>
 				</div>
 			</form>

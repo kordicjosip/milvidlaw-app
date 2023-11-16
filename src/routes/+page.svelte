@@ -39,7 +39,7 @@
 		<section class="flex flex-col gap-2">
 			<span class="font-medium text-lg">{date}</span>
 			{#each webinarsInDateGroup as webinar}
-				<Webinar webinarData={webinar} formData={data.form} />
+				<Webinar webinarData={webinar} />
 			{/each}
 		</section>
 	{/each}
