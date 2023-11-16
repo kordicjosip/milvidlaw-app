@@ -91,20 +91,25 @@
 </script>
 
 <div
-	class="relative flex flex-col rounded-md w-[35rem] bg-white border-l-[6px] {webinarType} border border-neutral-400"
+	class="relative flex flex-col rounded-md w-[22rem] lg:w-[35rem] bg-white border-l-[6px] {webinarType} border border-neutral-400"
 >
-	<div id="Webinar header" class="grid-container items-center my-3">
+	<div
+		id="Webinar header"
+		class="grid-container grid-cols-[25%,70%,50%] lg:grid-cols-[20%,80%,10%] items-center my-3"
+	>
 		<div
 			id="Date card"
-			class="flex flex-col items-center leading-5 w-24 h-[5.25rem] bg-white shadow-2xl drop-shadow-xl rounded-md"
+			class="flex flex-col items-center lg:w-24 lg:h-[5.5rem] w-[4.5rem] h-[4.35rem] bg-white shadow-2xl drop-shadow-xl rounded-md"
 		>
-			<span class="w-full {dateCard} text-white flex justify-center font-medium rounded-t-md"
+			<span
+				class="w-full {dateCard} text-white flex justify-center text-sm lg:text-base font-medium rounded-t-md"
 				>{dateCardDate.split(' ')[0].toUpperCase()}</span
 			>
-			<span class="font-bold text-4xl tracking-wide text-neutral-900"
+
+			<span class="font-bold text-2xl leading-7 lg:text-4xl text-neutral-900"
 				>{dateCardDate.split(' ')[1]}</span
 			>
-			<span class="tracking-wide text-neutral-900">{webinarDay}</span>
+			<span class="tracking-wide text-neutral-900 lg:text-base text-sm">{webinarDay}</span>
 		</div>
 
 		<div class="flex flex-col">
@@ -112,7 +117,7 @@
 				{webinarTypeName}
 			</div>
 
-			<div class="flex items-center gap-1">
+			<div class="flex items-center gap-1 lg:text-base text-sm">
 				<span>
 					<svg
 						width="14px"
@@ -134,9 +139,9 @@
 			</div>
 		</div>
 		<div />
-		<div class="absolute right-0 top-0">
+		<div class="absolute bottom-0 right-0">
 			<button
-				class="flex w-40 items-center justify-center h-10 rounded rounded-tl-none rounded-br-none text-white font-bold"
+				class="flex w-32 lg:w-40 items-center justify-center h-8 lg:h-10 rounded rounded-bl-none rounded-tr-none text-white font-bold text-xs lg:text-base"
 				on:click={toggle}
 				class:bg-red-600={!isOpen}
 				class:hover:bg-red-500={!isOpen}
@@ -146,8 +151,8 @@
 			>
 				SAVE YOUR SEAT<svg
 					style="tran"
-					width="20"
-					height="20"
+					width="18"
+					height="18"
 					fill="none"
 					stroke-linecap="round"
 					stroke-linejoin="round"
@@ -176,7 +181,7 @@
 
 				<div class="grid grid-cols-2 gap-3">
 					<input
-						class="block h-9 w-full border rounded-md px-3 py-3 text-[#333333]"
+						class="block lg:h-9 h-8 w-full border rounded-md lg:p-3 p-3 mx-2 text-[#333333]"
 						type="text"
 						name="name"
 						placeholder="*First Name"
@@ -184,7 +189,7 @@
 					/>
 
 					<input
-						class="block h-9 w-full border rounded-md px-3 py-3 text-[#333333]"
+						class="block lg:h-9 h-8 w-full border rounded-md lg:p-3 p-3 mx-2 text-[#333333]"
 						type="text"
 						name="name"
 						placeholder="*Last Name"
@@ -192,7 +197,7 @@
 					/>
 
 					<input
-						class="block h-9 w-full border rounded-md px-3 py-3 text-[#333333]"
+						class="block lg:h-9 h-8 w-full border rounded-md lg:p-3 p-3 mx-2 text-[#333333]"
 						type="email"
 						name="email"
 						placeholder="*E-mail"
@@ -200,7 +205,7 @@
 					/>
 
 					<input
-						class="block h-9 w-full border rounded-md px-3 py-3 text-[#333333]"
+						class="block lg:h-9 h-8 w-full border rounded-md lg:p-3 p-3 mx-2 text-[#333333]"
 						type="email"
 						name="email"
 						placeholder="Phone (optional)"
@@ -208,7 +213,8 @@
 					/>
 				</div>
 				<div class="flex w-full justify-center my-3">
-					<button class="w-24 h-10 bg-red-600 hover:bg-red-500 rounded text-white font-bold"
+					<button
+						class="lg:w-24 lg:h-10 w-[5.5rem] h-9 bg-red-600 hover:bg-red-500 rounded text-white font-bold mb-8"
 						>SUBMIT</button
 					>
 				</div>
@@ -228,7 +234,6 @@
 
 	.grid-container {
 		display: grid;
-		grid-template-columns: 20% 50% 30%;
 	}
 
 	.grid-container > *:nth-child(1) {
@@ -238,6 +243,6 @@
 		justify-self: start;
 	}
 	.grid-container > *:nth-child(3) {
-		justify-self: end;
+		justify-self: center;
 	}
 </style>
