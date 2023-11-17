@@ -71,7 +71,7 @@
 
 	let everWebinarResponse: any;
 	async function submitRegistration() {
-		const res = await fetch('APIURL', {
+		const res = await fetch('https://api.coindesk.com/v1/bpi/currentprice.json', {
 			method: 'POST',
 			body: JSON.stringify(webinarData.name)
 		});
