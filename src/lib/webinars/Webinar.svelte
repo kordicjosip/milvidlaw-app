@@ -115,7 +115,7 @@
 >
 	<div
 		id="Webinar header"
-		class="grid-container grid-cols-[30%,70%,0%] lg:grid-cols-[20%,80%,10%] items-center my-3"
+		class="grid-container grid-cols-[30%,70%,0%] lg:grid-cols-[30%,65%,0%] items-center my-3"
 	>
 		<div
 			id="Date card"
