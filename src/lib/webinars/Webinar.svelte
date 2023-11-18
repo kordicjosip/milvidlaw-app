@@ -44,7 +44,7 @@
 			webinarTypeName = 'Medicaid Planning Strategies';
 			break;
 		case '[Bi-Weekly]':
-			webinarTypeName = 'Five Things to Know About Estate Planning Once You Turn Sixty-Five';
+			webinarTypeName = '5 Things to Know About Estate Planning Once You Turn Sixty-Five';
 			break;
 		case '[HTAPG]':
 			webinarTypeName = 'How to Avoid Probate and Guardianship';
@@ -119,7 +119,7 @@
 	>
 		<div
 			id="Date card"
-			class="flex flex-col items-center lg:w-24 lg:h-[5.5rem] w-[4.8rem] h-[4.5rem] bg-white shadow-2xl drop-shadow-xl rounded-md"
+			class="flex flex-col items-center lg:w-24 lg:h-[5.5rem] w-[4.8rem] h-[4.25rem] bg-white shadow-2xl drop-shadow-xl rounded-md"
 		>
 			<span
 				class="w-full {dateCard} text-white flex justify-center text-sm lg:text-base font-medium rounded-t-md"
@@ -129,7 +129,7 @@
 			<span class="font-bold text-2xl leading-7 lg:text-4xl text-neutral-900"
 				>{dateCardDate.split(' ')[1]}</span
 			>
-			<span class="tracking-wide text-neutral-900 lg:text-base text-sm">{webinarDay}</span>
+			<span class="tracking-wide text-neutral-900 lg:text-base text-xs">{webinarDay}</span>
 		</div>
 
 		<div class="flex flex-col">
@@ -163,10 +163,10 @@
 		<div />
 		<div class="absolute bottom-0 right-0">
 			<button
-				class="flex w-32 lg:w-40 items-center justify-center h-8 lg:h-10 rounded rounded-bl-none rounded-tr-none text-white font-bold text-xs lg:text-base"
+				class="flex w-[8.5rem] lg:w-40 items-center justify-center h-8 lg:h-10 rounded rounded-bl-none rounded-tr-none text-white font-bold text-xs lg:text-base"
 				on:click={toggle}
-				class:bg-red-600={!isOpen}
-				class:hover:bg-red-500={!isOpen}
+				class:bg-plava={!isOpen}
+				class:hover:bg-[#1e3d5c]={!isOpen}
 				class:bg-neutral-400={isOpen}
 				class:hover:bg-neutral-500={isOpen}
 				aria-expanded={isOpen}
@@ -180,6 +180,7 @@
 					stroke-linejoin="round"
 					stroke-width="2"
 					viewBox="0 0 24 24"
+					transform="rotate(90)"
 					stroke="currentColor"><path d="M9 5l7 7-7 7" /></svg
 				>
 			</button>
@@ -193,34 +194,26 @@
 				style="height:1px;border:none;color:#d5d5d5;background-color:#d5d5d5;"
 			/>
 			<form method="POST" class="flex flex-col items-center">
-				<div class="flex flex-col items-center">
-					<div class="flex flex-col items-center mb-5">
-						Selected webinar:
-
-						<div class="font-medium">{webinarData.name}</div>
-					</div>
-				</div>
-
-				<div class="grid grid-cols-2 gap-3">
+				<div class="grid gap-3">
 					<input
 						bind:value={first_name}
-						class="block lg:h-9 h-8 w-full border rounded-md lg:p-3 p-3 mx-2 text-[#333333]"
+						class="block lg:h-9 h-8 border rounded-md lg:p-3 p-3 mx-4 text-[#333333]"
 						type="text"
-						name="name"
+						name="firstname"
 						placeholder="*First Name"
 					/>
 
 					<input
 						bind:value={last_name}
-						class="block lg:h-9 h-8 w-full border rounded-md lg:p-3 p-3 mx-2 text-[#333333]"
+						class="block lg:h-9 h-8 border rounded-md lg:p-3 p-3 mx-4 text-[#333333]"
 						type="text"
-						name="name"
+						name="lastname"
 						placeholder="*Last Name"
 					/>
 
 					<input
 						bind:value={email}
-						class="block lg:h-9 h-8 w-full border rounded-md lg:p-3 p-3 mx-2 text-[#333333]"
+						class="block lg:h-9 h-8 border rounded-md lg:p-3 p-3 mx-4 text-[#333333]"
 						type="email"
 						name="email"
 						placeholder="*E-mail"
@@ -228,16 +221,25 @@
 
 					<input
 						bind:value={phone}
-						class="block lg:h-9 h-8 w-full border rounded-md lg:p-3 p-3 mx-2 text-[#333333]"
-						type="email"
-						name="email"
+						class="block lg:h-9 h-8 border rounded-md lg:p-3 p-3 mx-4 text-[#333333]"
+						type="text"
+						name="phone"
+						id="phone"
 						placeholder="Phone (optional)"
 					/>
+					<label for="phone" class="text-neutral-700 text-xs italic px-5 -translate-y-2.5">
+						We will only use your phone number to send you one reminder 15 minutes before the
+						webinar.</label
+					>
 				</div>
-				<div class="flex w-full justify-center my-3">
+				<div class="flex flex-col items-center w-full justify-center mt-3 mb-12">
 					<button
-						class="lg:w-24 lg:h-10 w-[5.5rem] h-9 bg-red-600 hover:bg-red-500 rounded text-white font-bold mb-8"
+						class="lg:w-24 lg:h-10 w-[5.5rem] h-9 bg-red-600 hover:bg-red-500 rounded text-white font-bold mb-3"
 						on:click={submitRegistration}>SUBMIT</button
+					>
+					<span class="text-center lg:text-base text-xs mx-5"
+						>If you need to make changes to your reservation, please call our offices at (201)
+						380-2000.</span
 					>
 				</div>
 			</form>
@@ -251,7 +253,7 @@
 	}
 
 	[aria-expanded='true'] svg {
-		transform: rotate(0.25turn);
+		transform: rotate(0.75turn);
 	}
 
 	.grid-container {
