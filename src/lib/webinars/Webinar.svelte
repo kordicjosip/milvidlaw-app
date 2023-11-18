@@ -119,7 +119,7 @@
 	>
 		<div
 			id="Date card"
-			class="flex flex-col items-center lg:w-24 lg:h-[5.5rem] w-[4.5rem] h-[4.5rem] bg-white shadow-2xl drop-shadow-xl rounded-md"
+			class="flex flex-col items-center lg:w-24 lg:h-[5.5rem] w-[4.8rem] h-[4.5rem] bg-white shadow-2xl drop-shadow-xl rounded-md"
 		>
 			<span
 				class="w-full {dateCard} text-white flex justify-center text-sm lg:text-base font-medium rounded-t-md"
