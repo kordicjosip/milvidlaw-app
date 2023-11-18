@@ -6,8 +6,8 @@ export enum webinarTypes {
 
 export interface webinarData {
 	id: number;
-	scheduleId: number;
+	schedule: number;
 	date_time: string;
 	name: string;
-	lastUpdated: string;
+	updated: string;
 }

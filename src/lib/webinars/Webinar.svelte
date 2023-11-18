@@ -69,11 +69,25 @@
 		day: 'numeric'
 	});
 
+	let webinar_id: number = webinarData.id;
+	let schedule: number = webinarData.schedule;
+	let first_name: string;
+	let last_name: string;
+	let phone: string;
+	let email: string;
+
 	let everWebinarResponse: any;
 	async function submitRegistration() {
-		const res = await fetch('https://api.coindesk.com/v1/bpi/currentprice.json', {
+		const res = await fetch('https://api.webinarjam.com/everwebinar/register', {
 			method: 'POST',
-			body: JSON.stringify(webinarData.name)
+			body: {
+				webinar_id: webinar_id,
+				schedule: schedule,
+				first_name: first_name,
+				last_name: last_name,
+				phone: phone,
+				email: email
+			}
 		});
 
 		const json = await res.json();
@@ -190,6 +204,7 @@
 
 				<div class="grid grid-cols-2 gap-3">
 					<input
+						bind:value={first_name}
 						class="block lg:h-9 h-8 w-full border rounded-md lg:p-3 p-3 mx-2 text-[#333333]"
 						type="text"
 						name="name"
@@ -197,6 +212,7 @@
 					/>
 
 					<input
+						bind:value={last_name}
 						class="block lg:h-9 h-8 w-full border rounded-md lg:p-3 p-3 mx-2 text-[#333333]"
 						type="text"
 						name="name"
@@ -204,6 +220,7 @@
 					/>
 
 					<input
+						bind:value={email}
 						class="block lg:h-9 h-8 w-full border rounded-md lg:p-3 p-3 mx-2 text-[#333333]"
 						type="email"
 						name="email"
@@ -211,6 +228,7 @@
 					/>
 
 					<input
+						bind:value={phone}
 						class="block lg:h-9 h-8 w-full border rounded-md lg:p-3 p-3 mx-2 text-[#333333]"
 						type="email"
 						name="email"
