@@ -115,7 +115,7 @@
 >
 	<div
 		id="Webinar header"
-		class="grid-container grid-cols-[25%,70%,50%] lg:grid-cols-[20%,80%,10%] items-center my-3"
+		class="grid-container grid-cols-[30%,70%,0%] lg:grid-cols-[20%,80%,10%] items-center my-3"
 	>
 		<div
 			id="Date card"
@@ -155,8 +155,8 @@
 					</svg>
 				</span>
 				<span class="font-medium hidden lg:block">{webinarDay}, {webinarTimeUS}</span>
-				<div class="font-medium flex lg:hidden flex-col">
-					<span>{webinarDay},</span> <span>{webinarTimeUS}</span>
+				<div class="font-medium flex lg:hidden">
+					{webinarTimeUS}
 				</div>
 			</div>
 		</div>
