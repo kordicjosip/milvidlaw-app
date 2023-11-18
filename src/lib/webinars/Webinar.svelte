@@ -119,7 +119,7 @@
 	>
 		<div
 			id="Date card"
-			class="flex flex-col items-center lg:w-24 lg:h-[5.5rem] w-[4.5rem] h-[4.35rem] bg-white shadow-2xl drop-shadow-xl rounded-md"
+			class="flex flex-col items-center lg:w-24 lg:h-[5.5rem] w-[4.5rem] h-[4.5rem] bg-white shadow-2xl drop-shadow-xl rounded-md"
 		>
 			<span
 				class="w-full {dateCard} text-white flex justify-center text-sm lg:text-base font-medium rounded-t-md"
@@ -133,15 +133,14 @@
 		</div>
 
 		<div class="flex flex-col">
-			<div class="font-bold leading-5">
+			<div class="font-bold leading-5 mb-1">
 				{webinarTypeName}
 			</div>
 
 			<div class="flex items-center gap-1 lg:text-base text-sm">
 				<span>
 					<svg
-						width="14px"
-						height="14px"
+						class="w-5 h-5 lg:w-3.5 lg:h-3.5"
 						viewBox="0 0 24 24"
 						fill="none"
 						xmlns="http://www.w3.org/2000/svg"
@@ -155,7 +154,10 @@
 						/>
 					</svg>
 				</span>
-				<span class="font-medium">{webinarDay}, {webinarTimeUS}</span>
+				<span class="font-medium hidden lg:block">{webinarDay}, {webinarTimeUS}</span>
+				<div class="font-medium flex lg:hidden flex-col">
+					<span>{webinarDay},</span> <span>{webinarTimeUS}</span>
+				</div>
 			</div>
 		</div>
 		<div />
