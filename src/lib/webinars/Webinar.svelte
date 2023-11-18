@@ -4,7 +4,6 @@
 
 <script lang="ts">
 	import type { webinarTypes, webinarData } from '$lib/shared';
-	import { fade, blur, fly, slide, scale, draw, crossfade } from 'svelte/transition';
 	import { onMount, onDestroy } from 'svelte';
 	import { registerWebinar } from '$lib/apiPozivi';
 
@@ -187,7 +186,7 @@
 		</div>
 	</div>
 	{#if isOpen}
-		<ul in:blur={{ duration: 300 }} use:safariWorkaround>
+		<ul>
 			<div class="flex justify-center font-bold text-xl">Register for the Webinar</div>
 			<hr
 				class="mx-10 my-3"
