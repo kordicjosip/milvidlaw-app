@@ -111,11 +111,11 @@
 </script>
 
 <div
-	class="relative flex flex-col rounded-md w-[22rem] lg:w-[35rem] bg-white border-l-[6px] {webinarType} border border-neutral-400"
+	class="relative flex flex-col rounded-md w-[22rem] lg:w-[32rem] bg-white border-l-[6px] {webinarType} border border-neutral-400"
 >
 	<div
 		id="Webinar header"
-		class="grid-container grid-cols-[30%,70%,0%] lg:grid-cols-[30%,65%,0%] items-center my-3"
+		class="grid-container grid-cols-[30%,70%,0%] lg:grid-cols-[25%,65%,0%] items-center my-3"
 	>
 		<div
 			id="Date card"
