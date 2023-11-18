@@ -6,6 +6,7 @@
 	import type { webinarTypes, webinarData } from '$lib/shared';
 	import { fade, blur, fly, slide, scale, draw, crossfade } from 'svelte/transition';
 	import { onMount, onDestroy } from 'svelte';
+	import { registerWebinar } from '$lib/apiPozivi';
 
 	//Svelte slide buggy on Safari
 	function safariWorkaround(node) {
@@ -77,23 +78,19 @@
 	let email: string;
 
 	let everWebinarResponse: any;
-	async function submitRegistration() {
-		const res = await fetch('https://api.webinarjam.com/everwebinar/register', {
-			method: 'POST',
-			body: {
-				webinar_id: webinar_id,
-				schedule: schedule,
-				first_name: first_name,
-				last_name: last_name,
-				phone: phone,
-				email: email
-			}
-		});
 
-		const json = await res.json();
-		everWebinarResponse = JSON.stringify(json);
+	export const submitRegistration = async () => {
+		everWebinarResponse = await registerWebinar({
+			api_key: '902faaf6-2cfc-4a3f-85c4-87851b3e7b50',
+			webinar_id: webinar_id,
+			schedule: schedule,
+			first_name: first_name,
+			last_name: last_name,
+			phone: phone,
+			email: email
+		});
 		console.log(everWebinarResponse);
-	}
+	};
 
 	onMount(() => {
 		itemsCloseCallback.push(close);
