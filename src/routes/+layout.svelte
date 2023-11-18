@@ -1,10 +1,6 @@
 <script>
 	import '../app.css';
 	import logo from '$lib/assets/horizontal-white-400x89.png';
-	import Hamburger from '$lib/Hamburger.svelte';
-	import { slide } from 'svelte/transition';
-
-	let mobileNavOpen = false;
 </script>
 
 <div
@@ -34,70 +30,4 @@
 <slot />
 
 <style>
-	/*CSS3 STROKE EFFECT*/
-	#mainNav ul {
-		list-style: none;
-		margin: 0;
-	}
-	#mainNav ul li a {
-		padding-bottom: 10px;
-		text-decoration: none;
-	}
-	#mainNav ul li a,
-	#mainNav ul li a:after,
-	#mainNav ul li a:before {
-		transition: all 0.2s;
-	}
-	#mainNav ul li a:hover {
-		color: #bcac6d;
-	}
-
-	/* stroke */
-	#mainNav.stroke ul li a {
-		position: relative;
-	}
-	#mainNav.stroke ul li a:after,
-	#mainNav ul li a:after {
-		position: absolute;
-		bottom: 0;
-		left: 0;
-		right: 0;
-		margin: auto;
-		width: 0%;
-		content: '.';
-		color: transparent;
-		background: #bcac6d;
-		height: 2px;
-	}
-
-	#mainNav.stroke ul li a:hover:after {
-		width: 100%;
-	}
-
-	#mainNav ul li a {
-		transition: all 1s;
-	}
-
-	#mainNav ul li a:after {
-		text-align: left;
-		content: '.';
-		margin: 0;
-		opacity: 0;
-	}
-	#mainNav ul li a:hover {
-		color: #bcac6d;
-		z-index: 1;
-	}
-	#mainNav ul li a:hover:after {
-		z-index: -10;
-		animation: fill 1s forwards;
-		opacity: 1;
-	}
-
-	.mobilenav > ul > li {
-		@apply font-light text-sm;
-	}
-	.mobilenav > ul > li:not(:last-child) {
-		@apply mb-6;
-	}
 </style>
