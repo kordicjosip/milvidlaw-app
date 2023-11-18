@@ -124,6 +124,9 @@
 	}
 
 	.mobilenav > ul > li {
-		@apply mb-6 font-light text-sm;
+		@apply font-light text-sm;
+	}
+	.mobilenav > ul > li:not(:last-child) {
+		@apply mb-6;
 	}
 </style>
