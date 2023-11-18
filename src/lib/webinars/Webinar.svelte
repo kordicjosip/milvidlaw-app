@@ -6,13 +6,15 @@
 	import type { webinarTypes, webinarData } from '$lib/shared';
 	import { onMount, onDestroy } from 'svelte';
 	import { registerWebinar } from '$lib/apiPozivi';
+	import { emailValidator, requiredValidator } from '$lib/formValidation/validators.js';
+	import { createFieldValidator } from '$lib/formValidation/validation.js';
 
-	//Svelte slide buggy on Safari
-	function safariWorkaround(node) {
-		if (navigator.appVersion.includes('Safari')) {
-			node.style.overflow = 'hidden';
-		}
-	}
+	const [emailValidity, validateEmail] = createFieldValidator(
+		requiredValidator(),
+		emailValidator()
+	);
+	const [firstNameValidity, validateFirstName] = createFieldValidator(requiredValidator());
+	const [lastNameValidity, validateLastName] = createFieldValidator(requiredValidator());
 
 	export let webinarData: webinarData;
 
@@ -78,6 +80,11 @@
 
 	let everWebinarResponse: any;
 
+	let submitButtonTitle: string | null;
+	$: submitButtonTitle =
+		!$emailValidity.valid || !$firstNameValidity.valid || !$lastNameValidity.valid
+			? 'Please fill out all required fields'
+			: '';
 	export const submitRegistration = async () => {
 		everWebinarResponse = await registerWebinar({
 			api_key: '902faaf6-2cfc-4a3f-85c4-87851b3e7b50',
@@ -193,30 +200,54 @@
 				style="height:1px;border:none;color:#d5d5d5;background-color:#d5d5d5;"
 			/>
 			<form method="POST" class="flex flex-col items-center">
-				<div class="grid gap-3">
-					<input
-						bind:value={first_name}
-						class="block lg:h-9 h-8 border rounded-md lg:p-3 p-3 mx-4 text-[#333333]"
-						type="text"
-						name="firstname"
-						placeholder="*First Name"
-					/>
+				<div class="grid w-full gap-3">
+					<div class="table relative mx-4">
+						<input
+							bind:value={first_name}
+							class="table-cell w-full lg:p-3 p-3 lg:h-9 h-8 border rounded-md text-[#333333]"
+							type="text"
+							name="firstname"
+							placeholder="*First Name"
+							use:validateFirstName={first_name}
+						/>
+						{#if $firstNameValidity.dirty && !$firstNameValidity.valid}
+							<span class="table-cell absolute text-neutral-700 text-[0.5rem] italic px-2">
+								* {$firstNameValidity.message}
+							</span>
+						{/if}
+					</div>
 
-					<input
-						bind:value={last_name}
-						class="block lg:h-9 h-8 border rounded-md lg:p-3 p-3 mx-4 text-[#333333]"
-						type="text"
-						name="lastname"
-						placeholder="*Last Name"
-					/>
+					<div class="table relative mx-4">
+						<input
+							bind:value={last_name}
+							class="table-cell w-full lg:p-3 p-3 lg:h-9 h-8 border rounded-md text-[#333333]"
+							type="text"
+							name="lastname"
+							placeholder="*Last Name"
+							use:validateLastName={last_name}
+						/>
+						{#if $lastNameValidity.dirty && !$lastNameValidity.valid}
+							<span class="table-cell absolute text-neutral-700 text-[0.5rem] italic px-2">
+								* {$lastNameValidity.message}
+							</span>
+						{/if}
+					</div>
 
-					<input
-						bind:value={email}
-						class="block lg:h-9 h-8 border rounded-md lg:p-3 p-3 mx-4 text-[#333333]"
-						type="email"
-						name="email"
-						placeholder="*E-mail"
-					/>
+					<div class="table relative mx-4">
+						<input
+							bind:value={email}
+							class="table-cell w-full lg:p-3 p-3 lg:h-9 h-8 border rounded-md text-[#333333]"
+							type="email"
+							name="email"
+							placeholder="*E-mail"
+							use:validateEmail={email}
+						/>
+						{#if $emailValidity.dirty && !$emailValidity.valid}
+							<span class="table-cell absolute text-neutral-700 text-[0.5rem] italic px-2">
+								{$emailValidity.message}
+							</span>
+						{/if}
+					</div>
 
 					<input
 						bind:value={phone}
@@ -233,7 +264,9 @@
 				</div>
 				<div class="flex flex-col items-center w-full justify-center mt-3 mb-12">
 					<button
-						class="lg:w-24 lg:h-10 w-[5.5rem] h-9 bg-red-600 hover:bg-red-500 rounded text-white font-bold mb-3"
+						title={submitButtonTitle}
+						disabled={!$emailValidity.valid | !$firstNameValidity.valid | !$lastNameValidity.valid}
+						class="lg:w-24 lg:h-10 w-[5.5rem] h-9 bg-red-600 hover:bg-red-500 rounded text-white font-bold mb-3 disabled:opacity-50 disabled:cursor-not-allowed"
 						on:click={submitRegistration}>SUBMIT</button
 					>
 					<span class="text-center lg:text-base text-xs mx-5"

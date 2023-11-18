@@ -34,7 +34,7 @@
 	<title>New Jersey Elder Law & Estate Planning Attorney | Milvidskiy Law Firm</title>
 	<meta name="Description" content="New Jersey Elder Law & Estate Planning Attorney" />
 </svelte:head>
-<div class="flex flex-col gap-6 w-full items-center mt-5 lg:mt-10">
+<div class="flex flex-col gap-6 w-full items-center my-5 lg:my-10">
 	{#each Object.entries(groupedWebinars) as [date, webinarsInDateGroup]}
 		<section class="flex flex-col gap-2">
 			<span class="font-medium text-lg">{date}</span>
