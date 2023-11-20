@@ -284,6 +284,7 @@
 						title={submitButtonTitle}
 						disabled={!$emailValidity.valid | !$firstNameValidity.valid | !$lastNameValidity.valid}
 						class="lg:w-24 lg:h-10 w-[5.5rem] h-9 bg-red-600 hover:bg-red-500 rounded text-white font-bold mb-3 disabled:opacity-50 disabled:cursor-not-allowed"
+						type="button"
 						on:click={submitRegistration}>SUBMIT</button
 					>
 					<span class="text-center lg:text-base text-xs mx-5"
