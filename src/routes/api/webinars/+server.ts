@@ -26,5 +26,9 @@ export const POST: RequestHandler = async ({ request }) => {
 		})
 	});
 
-	return new Response('');
+	return new Response(await response.text(), {
+		headers: {
+			'content-type': 'application/json'
+		}
+	});
 };
