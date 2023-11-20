@@ -21,8 +21,8 @@ export const POST: RequestHandler = async ({ request }) => {
 	const response = await fetch('https://api.webinarjam.com/everwebinar/register', {
 		method: 'POST',
 		body: JSON.stringify({
-			...req,
-			api_key: '902faaf6-2cfc-4a3f-85c4-87851b3e7b50'
+			api_key: '902faaf6-2cfc-4a3f-85c4-87851b3e7b50',
+			...req
 		})
 	});
 
