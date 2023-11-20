@@ -326,6 +326,7 @@
 		-webkit-transition: max-height 0.2s ease-in-out;
 		-moz-transition: max-height 0.2s ease-in-out;
 		-ms-transition: max-height 0.2s ease-in-out;
+		will-change: max-height;
 	}
 
 	.open {
