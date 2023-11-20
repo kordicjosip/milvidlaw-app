@@ -23,7 +23,11 @@ export const POST: RequestHandler = async ({ request }) => {
 		body: JSON.stringify({
 			api_key: '902faaf6-2cfc-4a3f-85c4-87851b3e7b50',
 			...req
-		})
+		}),
+		headers: {
+			'content-type': 'application/json',
+			Accepts: 'application/json'
+		}
 	});
 
 	return new Response(await response.text(), {
