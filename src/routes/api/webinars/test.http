@@ -1,3 +1,9 @@
+GET https://api.lawmatics.com/v1/custom_fields
+Authorization: Bearer fltZZ1DoC44K2s2wSXVcU_nOf-XjGadcfv52OgUYgs0
+
+Accept: application/json
+
+###
 POST https://api.webinarjam.com/everwebinar/register
 
 

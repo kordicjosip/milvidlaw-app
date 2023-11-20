@@ -5,9 +5,10 @@
 <script lang="ts">
 	import type { webinarTypes, webinarData } from '$lib/shared';
 	import { onMount, onDestroy } from 'svelte';
-	import { registerWebinar } from '$lib/apiPozivi';
+	import { registerLawmatics, registerWebinar } from '$lib/apiPozivi';
 	import { emailValidator, requiredValidator } from '$lib/formValidation/validators.js';
 	import { createFieldValidator } from '$lib/formValidation/validation.js';
+	import { page } from '$app/stores';
 
 	const [emailValidity, validateEmail] = createFieldValidator(
 		requiredValidator(),
@@ -95,7 +96,10 @@
 	let phone: string;
 	let email: string;
 
-	let everWebinarResponse: any;
+	let everwebinarResponse: any;
+	let lawmaticsResponse: any;
+
+	let utmSource: string | null;
 
 	let submitButtonTitle: string | null;
 	$: submitButtonTitle =
@@ -103,7 +107,7 @@
 			? 'Please fill out all required fields'
 			: '';
 	export const submitRegistration = async () => {
-		everWebinarResponse = await registerWebinar({
+		everwebinarResponse = await registerWebinar({
 			webinar_id: webinar_id,
 			schedule: schedule,
 			first_name: first_name,
@@ -111,7 +115,30 @@
 			phone: phone,
 			email: email
 		});
-		console.log(everWebinarResponse);
+		console.log(everwebinarResponse);
+		if (everwebinarResponse.status === 'success') {
+			console.log('success everwebinar');
+			await submitLawmatics();
+		}
+	};
+
+	export const submitLawmatics = async () => {
+		lawmaticsResponse = await registerLawmatics({
+			first_name: first_name,
+			last_name: last_name,
+			match_contact_by: 'email',
+			email: email,
+			phone: phone,
+			practice_area_id: 1690,
+			custom_fields: [
+				{ id: 28272, value: webinarData.date_time },
+				{ id: 288415, value: utmSource },
+				{ id: 29064, value: webinarData.name },
+				{ id: 32600, value: everwebinarResponse.user['live_room_url'] },
+				{ id: 32601, value: everwebinarResponse.user['replay_room_url'] }
+			]
+		});
+		console.log(lawmaticsResponse);
 	};
 
 	onMount(() => {
@@ -126,6 +153,8 @@
 			webinarType = borderColor.htapg;
 			dateCard = dateCardColor.htapg;
 		}
+		utmSource = $page.url.searchParams.get('utm_source') || 'Web';
+		console.log(utmSource);
 	});
 	onDestroy(() => {
 		console.log(itemsCloseCallback.findIndex((callback) => close === callback));

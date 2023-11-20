@@ -1,4 +1,4 @@
-import { mysqlconnFn, mysqlconnPool } from '$lib/db/mysql';
+import { mysqlconnPool } from '$lib/db/mysql';
 import type { RequestHandler } from '@sveltejs/kit';
 
 export async function GET() {

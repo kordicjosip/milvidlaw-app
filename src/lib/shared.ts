@@ -20,3 +20,18 @@ export interface webinarRegisterRequest {
 	phone: string;
 	email: string;
 }
+
+interface CustomField {
+	id: number;
+	value: string;
+}
+
+export interface lawmaticsRegisterRequest {
+	first_name: string;
+	last_name: string;
+	match_contact_by: string;
+	email: string;
+	phone: string;
+	practice_area_id: number;
+	custom_fields: CustomField[];
+}
