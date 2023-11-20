@@ -104,7 +104,6 @@
 			: '';
 	export const submitRegistration = async () => {
 		everWebinarResponse = await registerWebinar({
-			api_key: '902faaf6-2cfc-4a3f-85c4-87851b3e7b50',
 			webinar_id: webinar_id,
 			schedule: schedule,
 			first_name: first_name,

@@ -13,7 +13,6 @@ export interface webinarData {
 }
 
 export interface webinarRegisterRequest {
-	api_key: string;
 	webinar_id: number;
 	schedule: number;
 	first_name: string;

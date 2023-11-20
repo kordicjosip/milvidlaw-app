@@ -1,4 +1,5 @@
 import { mysqlconnFn, mysqlconnPool } from '$lib/db/mysql';
+import type { RequestHandler } from '@sveltejs/kit';
 
 export async function GET() {
 	let mysqlconn = await mysqlconnPool();
@@ -13,3 +14,17 @@ export async function GET() {
 		});
 	return new Response(JSON.stringify(results));
 }
+
+export const POST: RequestHandler = async ({ request }) => {
+	const req = await request.json();
+
+	const response = await fetch('https://api.webinarjam.com/everwebinar/register', {
+		method: 'POST',
+		body: JSON.stringify({
+			...req,
+			api_key: '902faaf6-2cfc-4a3f-85c4-87851b3e7b50'
+		})
+	});
+
+	return new Response('');
+};
