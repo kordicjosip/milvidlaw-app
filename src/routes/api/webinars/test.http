@@ -1,5 +1,4 @@
 POST https://api.webinarjam.com/everwebinar/register
-Content-Type: application/json
 
 
 {"api_key":"902faaf6-2cfc-4a3f-85c4-87851b3e7b50","webinar_id":"710","schedule":"1557","first_name":"Test","last_name":"Test","phone":"+38763266577","email":"josip.kordic6@gmail.com"}
