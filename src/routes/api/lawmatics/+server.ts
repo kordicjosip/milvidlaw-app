@@ -11,7 +11,8 @@ export const POST: RequestHandler = async ({ request }) => {
 		},
 		body: JSON.stringify({
 			req
-		})
+		}),
+		redirect: 'follow'
 	});
 
 	return new Response(await response.text(), {
