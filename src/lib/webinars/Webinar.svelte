@@ -8,6 +8,7 @@
 	import { registerLawmatics, registerWebinar } from '$lib/apiPozivi';
 	import { emailValidator, requiredValidator } from '$lib/formValidation/validators.js';
 	import { createFieldValidator } from '$lib/formValidation/validation.js';
+	import { slide } from 'svelte/transition';
 	import { page } from '$app/stores';
 
 	const [emailValidity, validateEmail] = createFieldValidator(
@@ -30,27 +31,12 @@
 		htapg: 'bg-zelena'
 	};
 
-	let webinarDropdown;
 	const toggle = () => {
 		itemsCloseCallback.filter((callback) => close !== callback).forEach((i) => i());
-		//if isOpen is false, set it to !isOpen immediately, if it is true, set it to !isOpen after 200ms
-		setTimeout(() => (isOpen = !isOpen), !isOpen ? 0 : 200);
-		//if isOpen is true, remove remove "open" class from webinarDropdown
-		if (isOpen === true) {
-			webinarDropdown.classList.remove('open');
-		}
+		isOpen = !isOpen;
 	};
 
-	const close = () => {
-		// if isOpen is true, remove "open" class from webinarDropdown
-		if (isOpen === true) {
-			webinarDropdown.classList.remove('open');
-		}
-		// set isOpen to false after 200ms
-		setTimeout(() => {
-			isOpen = false;
-		}, 200);
-	};
+	const close = () => (isOpen = false);
 
 	let webinarType: webinarTypes;
 	let dateCard: webinarTypes;
@@ -238,8 +224,8 @@
 		</div>
 	</div>
 
-	<ul class:open={isOpen} bind:this={webinarDropdown}>
-		{#if isOpen}
+	{#if isOpen}
+		<ul transition:slide={{ duration: 300 }}>
 			<div class="flex justify-center font-bold text-xl">Register for the Webinar</div>
 			<hr
 				class="mx-10 my-3"
@@ -322,8 +308,8 @@
 					>
 				</div>
 			</form>
-		{/if}
-	</ul>
+		</ul>
+	{/if}
 </div>
 
 <style>
@@ -347,18 +333,5 @@
 	}
 	.grid-container > *:nth-child(3) {
 		justify-self: center;
-	}
-	ul {
-		max-height: 0;
-		overflow: hidden;
-		transition: max-height 0.2s ease-in-out;
-		-webkit-transition: max-height 0.2s ease-in-out;
-		-moz-transition: max-height 0.2s ease-in-out;
-		-ms-transition: max-height 0.2s ease-in-out;
-		will-change: max-height;
-	}
-
-	.open {
-		max-height: 1000px; /* adjust this value as needed */
 	}
 </style>
