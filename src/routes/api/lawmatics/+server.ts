@@ -9,9 +9,7 @@ export const POST: RequestHandler = async ({ request }) => {
 			Authorization: 'Bearer fltZZ1DoC44K2s2wSXVcU_nOf-XjGadcfv52OgUYgs0',
 			Accepts: 'application/json'
 		},
-		body: JSON.stringify({
-			req
-		}),
+		body: JSON.stringify(req),
 		redirect: 'follow'
 	});
 
