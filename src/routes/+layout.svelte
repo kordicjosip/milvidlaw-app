@@ -3,6 +3,7 @@
 	import logo from '$lib/assets/horizontal-white-400x89.png';
 </script>
 
+
 <div
 	class="flex gap-5 lg:gap-0 flex-col lg:flex-row items-center bg-plava lg:justify-around w-full p-6"
 >
