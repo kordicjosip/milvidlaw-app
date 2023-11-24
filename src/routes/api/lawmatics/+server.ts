@@ -5,7 +5,8 @@ export const POST: RequestHandler = async ({ request }) => {
 		method: 'POST',
 		headers: {
 			Authorization: 'Bearer fltZZ1DoC44K2s2wSXVcU_nOf-XjGadcfv52OgUYgs0',
-			Accepts: 'application/json'
+			Accepts: 'application/json',
+			Connection: 'keep-alive'
 		},
 		body: await request.text(),
 		redirect: 'follow'
@@ -13,8 +14,7 @@ export const POST: RequestHandler = async ({ request }) => {
 
 	return new Response(await response.text(), {
 		headers: {
-			'content-type': 'application/json',
-			Accepts: 'application/json'
+			'content-type': 'application/json'
 		}
 	});
 };
