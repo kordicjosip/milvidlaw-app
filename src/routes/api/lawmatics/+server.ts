@@ -6,6 +6,7 @@ export const POST: RequestHandler = async ({ request }) => {
 		headers: {
 			Authorization: 'Bearer fltZZ1DoC44K2s2wSXVcU_nOf-XjGadcfv52OgUYgs0',
 			Accepts: 'application/json',
+			ContentType: 'application/json',
 			Connection: 'keep-alive'
 		},
 		body: await request.text(),
