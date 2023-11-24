@@ -87,6 +87,7 @@
 
 	let utmSource: string | null;
 
+	let registerButton: string = isOpen ? 'CANCEL' : 'SAVE YOUR SEAT';
 	let submitButtonTitle: string | null;
 	$: submitButtonTitle =
 		!$emailValidity.valid || !$firstNameValidity.valid || !$lastNameValidity.valid
@@ -208,7 +209,7 @@
 				class:hover:bg-neutral-500={isOpen}
 				aria-expanded={isOpen}
 			>
-				SAVE YOUR SEAT<svg
+				{registerButton}<svg
 					style="tran"
 					width="18"
 					height="18"
