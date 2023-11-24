@@ -87,7 +87,8 @@
 
 	let utmSource: string | null;
 
-	let registerButton: string = isOpen ? 'CANCEL' : 'SAVE YOUR SEAT';
+	let registerButton: string;
+	$: registerButton = isOpen ? 'CANCEL' : 'SAVE YOUR SEAT';
 	let submitButtonTitle: string | null;
 	$: submitButtonTitle =
 		!$emailValidity.valid || !$firstNameValidity.valid || !$lastNameValidity.valid
