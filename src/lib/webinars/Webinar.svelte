@@ -202,7 +202,7 @@
 		<div />
 		<div class="absolute bottom-0 right-0">
 			<button
-				class="flex w-[8.5rem] lg:w-40 items-center justify-center h-8 lg:h-10 rounded rounded-bl-none rounded-tr-none text-white font-bold text-xs lg:text-base"
+				class="flex w-[8.5rem] transition lg:w-40 items-center justify-center h-8 lg:h-10 rounded rounded-bl-none rounded-tr-none text-white font-bold text-xs lg:text-base"
 				on:click={toggle}
 				class:bg-plava={!isOpen}
 				class:hover:bg-[#1e3d5c]={!isOpen}
