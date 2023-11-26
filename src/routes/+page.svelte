@@ -5,8 +5,6 @@
 	export let data: PageData;
 	data.webinars.sort((a, b) => new Date(a.date_time) - new Date(b.date_time));
 
-	console.log(data);
-
 	$: groupedWebinars = groupByDate(data.webinars);
 	function groupByDate(webinars) {
 		const grouped = {};
@@ -28,7 +26,6 @@
 
 		return grouped;
 	}
-	console.log(groupedWebinars);
 </script>
 
 <svelte:head>

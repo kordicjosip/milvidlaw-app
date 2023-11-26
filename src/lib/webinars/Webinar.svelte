@@ -79,7 +79,6 @@
 		weekday: 'long',
 		month: 'long'
 	}).format(webinarDay);
-	console.log(formattedWebinarDay);
 
 	let webinarTimeUS: string;
 	webinarTimeUS = webinarData.date_time.split(' ')[1];
@@ -95,7 +94,6 @@
 		month: 'long',
 		day: 'numeric'
 	}).format(dateCardDate);
-	console.log(dateCardDate);
 
 	let webinar_id: number = webinarData.id;
 	let schedule: number = webinarData.schedule;
@@ -179,7 +177,7 @@
 			dateCard = dateCardColor.htapg;
 		}
 		utmSource = $page.url.searchParams.get('utm_source') || 'Web';
-		console.log(utmSource);
+		//utmSource je utm_source iz url-a webinar.milvidlaw.com/?utm_source=google
 	});
 	onDestroy(() => {
 		console.log(itemsCloseCallback.findIndex((callback) => close === callback));

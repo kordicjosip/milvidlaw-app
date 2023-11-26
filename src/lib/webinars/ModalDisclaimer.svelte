@@ -46,6 +46,13 @@
 		</div>
 		<!-- svelte-ignore a11y-autofocus -->
 	</div>
+	<div class="flex justify-end">
+		<button
+			class="bg-plava py-2 px-3 rounded-md text-white font-medium text-lg"
+			on:click={() => dialog.close()}
+			>Close
+		</button>
+	</div>
 </dialog>
 
 <style>
