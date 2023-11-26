@@ -1,22 +1,22 @@
 <script lang="ts">
-	export let showModal: boolean;
+	export let showModalDisclaimer: boolean;
 
 	let dialog: HTMLDialogElement;
 
-	$: if (dialog && showModal) dialog.showModal();
+	$: if (dialog && showModalDisclaimer) dialog.showModal();
 </script>
 
 <!-- svelte-ignore a11y-click-events-have-key-events a11y-no-noninteractive-element-interactions -->
 <dialog
-	class="bg-cyan-800 !rounded-lg"
+	class="!rounded-md max-w-[90%] lg:max-w-[50%]"
 	bind:this={dialog}
-	on:close={() => (showModal = false)}
+	on:close={() => (showModalDisclaimer = false)}
 	on:click|self={() => dialog.close()}
 >
 	<!-- svelte-ignore a11y-no-static-element-interactions -->
-	<div on:click|stopPropagation class="mt-5 mx-1">
+	<div on:click|stopPropagation class="m-3">
 		<button
-			class="absolute top-1 right-1 hover:bg-cyan-950 p-1 rounded-lg"
+			class="absolute top-5 right-5 bg-plava p-1 rounded-lg"
 			autofocus
 			on:click={() => dialog.close()}
 			><svg
@@ -32,17 +32,24 @@
 				/>
 			</svg></button
 		>
-		<slot name="header" />
-
-		<hr class="h-[2px] w-full bg-neutral-300 my-3" />
-		<slot />
+		<div class="font-bold text-xl text-plava mb-4">Disclaimer</div>
+		<div>
+			Attorney Advertising. The information presented on this website is for informational purposes
+			only and should not be construed as a legal advice. Viewing of, responding to, or otherwise
+			transmitting the information on this website is not intended to create, and receipt of the
+			same does not constitute, an attorney-client relationship. The information provided on this
+			website should not be relied upon without first seeking professional legal counsel. The
+			information on this website is provided only as general information which may or may not
+			reflect the most current developments of law. Prior results and cases discussed on this
+			website do not imply and do not guarantee a similar outcome in any other case. The links to
+			other websites contained herein do not constitute a referral or endorsement of any kind.
+		</div>
 		<!-- svelte-ignore a11y-autofocus -->
 	</div>
 </dialog>
 
 <style>
 	dialog {
-		max-width: 32em;
 		border-radius: 0.2em;
 		border: none;
 		padding: 0;
