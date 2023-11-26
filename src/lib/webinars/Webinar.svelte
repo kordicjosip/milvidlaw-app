@@ -48,7 +48,7 @@
 
 	let webinarTypeName: string;
 	let webinarShortDesc: string;
-	let webinarImage: object;
+	let webinarImage: string;
 	webinarTypeName = webinarData.name.split(' ')[0];
 	switch (webinarTypeName) {
 		case '[MPS]':
@@ -60,7 +60,7 @@
 		case '[Bi-Weekly]':
 			webinarTypeName = '5 Things to Know About Estate Planning Once You Turn Sixty-Five';
 			webinarShortDesc =
-				'Free educational webinar about estate planning, wills and living trusts, long-term care and Medicaid planning. Presented by Andrey Milvidskiy, Esq. ';
+				'Free webinar about estate planning, wills and living trusts, long-term care and Medicaid planning. Presented by Andrey Milvidskiy, Esq. ';
 			webinarImage = FiveThingsImage;
 			break;
 		case '[HTAPG]':
@@ -230,7 +230,7 @@
 		</div>
 		<div />
 		<div class="hidden lg:block absolute right-0 top-0 w-52">
-			<img src={webinarImage} alt="Webinar Image" class="h-[8.25rem] w-full rounded-tr" />
+			<img src={webinarImage} alt="Webinar" class="h-[8.25rem] w-full rounded-tr" />
 			<button
 				class="flex transition duration-500 lg:w-full items-center justify-center h-8 lg:h-10 text-white font-bold text-xs lg:text-base"
 				on:click={toggle}

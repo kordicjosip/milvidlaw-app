@@ -1,6 +1,7 @@
 <script>
 	import '../app.css';
 	import logo from '$lib/assets/horizontal-white-400x89.png';
+	import Footer from '$lib/Footer.svelte';
 </script>
 
 <div
@@ -37,6 +38,8 @@
 </div>
 
 <slot />
+
+<Footer />
 
 <style>
 </style>
