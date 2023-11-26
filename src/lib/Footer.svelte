@@ -11,9 +11,9 @@
 <hr />
 <div class="flex flex-col items-center justify-center">
 	<span class="m-10 text-neutral-700">OFFICE LOCATIONS</span>
-	<div class="flex flex-col lg:flex-row gap-5 text-sm lg:text-base">
+	<div class="flex flex-col lg:flex-row gap-5 lg:gap-16 text-sm lg:text-base">
 		<div class="">
-			<div class="flex">
+			<div class="flex justify-center">
 				<svg class="w-4" fill="#000000" viewBox="0 0 395.71 395.71" xml:space="preserve"
 					><g id="SVGRepo_bgCarrier" stroke-width="0" /><g
 						id="SVGRepo_tracerCarrier"
@@ -28,13 +28,15 @@
 					</g></svg
 				><span class="font-bold mb-1">Paramus</span>
 			</div>
-			<div class="pl-4">
-				29 N Farview Ave<br />Paramus, NJ 07652<br /><a href="tel:2013802000">(201) 380-2000</a>
+			<div class="flex flex-col items-center">
+				<span>29 N Farview Ave</span><span>Paramus, NJ 07652</span><span
+					><a href="tel:2013802000">(201) 380-2000</a></span
+				>
 			</div>
 		</div>
 
 		<div class="">
-			<div class="flex">
+			<div class="flex justify-center">
 				<svg class="w-4" fill="#000000" viewBox="0 0 395.71 395.71" xml:space="preserve"
 					><g id="SVGRepo_bgCarrier" stroke-width="0" /><g
 						id="SVGRepo_tracerCarrier"
@@ -49,15 +51,14 @@
 					</g></svg
 				><span class="font-bold mb-1">Morristown</span>
 			</div>
-			<div class="pl-4">
-				163 Madison Ave<br />2nd Fl, Ste 220<br />Morristown, NJ 07960<br /><a href="tel:9739889200"
-					>(973) 988-9200</a
-				>
+			<div class="flex flex-col items-center">
+				<span>163 Madison Ave</span><span>2nd Fl, Ste 220</span><span>Morristown, NJ 07960</span
+				><span><a href="tel:9739889200">(973) 988-9200</a></span>
 			</div>
 		</div>
 
 		<div class="">
-			<div class="flex">
+			<div class="flex justify-center">
 				<svg class="w-4" fill="#000000" viewBox="0 0 395.71 395.71" xml:space="preserve"
 					><g id="SVGRepo_bgCarrier" stroke-width="0" /><g
 						id="SVGRepo_tracerCarrier"
@@ -72,10 +73,10 @@
 					</g></svg
 				><span class="font-bold mb-1">Red Bank</span>
 			</div>
-			<div class="pl-4">
-				331 Newman Springs Rd<br />Bldg 1, 4th Fl, Ste 143<br />Red Bank, NJ 07701<br /><a
-					href="tel:732374200">(732) 377-4200</a
-				>
+			<div class="flex flex-col items-center">
+				<span>331 Newman Springs Rd</span><span>Bldg 1, 4th Fl, Ste 143</span><span
+					>Red Bank, NJ 07701</span
+				><span><a href="tel:732374200">(732) 377-4200</a></span>
 			</div>
 		</div>
 	</div>
