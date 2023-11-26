@@ -67,11 +67,16 @@
 				UPCOMING EVENTS
 			</div>
 			<div class="">
-				Our attorneys host a series of free educational webinars focusing on such key areas as elder
-				law, estate planning, wills and trusts, asset protection, long-term care and Medicaid
-				planning. These sessions are designed to inform and empower you with essential legal
-				knowledge. Whether you're planning for the future or navigating current legal challenges,
-				our webinars offer guidance and clarity.
+				<span
+					>Our attorneys host a series of free educational webinars focusing on such key areas as
+					elder law, estate planning, wills and trusts, asset protection, long-term care and
+					Medicaid planning.</span
+				>
+				<span class="hidden lg:block"
+					>These sessions are designed to inform and empower you with essential legal knowledge.
+					Whether you're planning for the future or navigating current legal challenges, our
+					webinars offer guidance and clarity.</span
+				>
 			</div>
 		</div>
 
