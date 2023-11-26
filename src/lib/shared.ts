@@ -35,3 +35,13 @@ export interface lawmaticsRegisterRequest {
 	practice_area_id: number;
 	custom_fields: CustomField[];
 }
+
+export interface webinarRegisterDatabase {
+	first_name: string;
+	last_name: string;
+	email: string;
+	phone: string;
+	webinar: string;
+	ew_live: string;
+	ew_replay: string;
+}

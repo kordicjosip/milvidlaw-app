@@ -3,9 +3,9 @@
 </script>
 
 <script lang="ts">
-	import type { webinarTypes, webinarData } from '$lib/shared';
+	import type { webinarTypes, webinarData, webinarRegisterDatabase } from '$lib/shared';
 	import { onMount, onDestroy } from 'svelte';
-	import { registerLawmatics, registerWebinar } from '$lib/apiPozivi';
+	import { registerLawmatics, registerWebinar, registerWebinarDatabase } from '$lib/apiPozivi';
 	import { emailValidator, requiredValidator } from '$lib/formValidation/validators.js';
 	import { createFieldValidator } from '$lib/formValidation/validation.js';
 	import { slide } from 'svelte/transition';
@@ -128,9 +128,23 @@
 		console.log(everwebinarResponse);
 		if (everwebinarResponse.status === 'success') {
 			console.log('success everwebinar');
+			await submitRegistrationDatabase();
 			await goto('https://milvidlaw.com/next-webinar/thank-you-for-registration/');
 			//await submitLawmatics();
 		}
+	};
+
+	let webinarDatabaseData: webinarRegisterDatabase;
+	export const submitRegistrationDatabase = async () => {
+		webinarDatabaseData = await registerWebinarDatabase({
+			first_name: first_name,
+			last_name: last_name,
+			email: email,
+			phone: phone,
+			webinar: webinarTypeName,
+			ew_live: everwebinarResponse.user['live_room_url'],
+			ew_replay: everwebinarResponse.user['replay_room_url']
+		});
 	};
 
 	export const submitLawmatics = async () => {
