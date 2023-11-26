@@ -35,13 +35,18 @@
 	<title>New Jersey Elder Law & Estate Planning Attorney | Milvidskiy Law Firm</title>
 	<meta name="Description" content="New Jersey Elder Law & Estate Planning Attorney" />
 </svelte:head>
-<div class="flex flex-col gap-6 w-full items-center my-5 lg:my-10">
-	{#each Object.entries(groupedWebinars) as [date, webinarsInDateGroup]}
-		<section class="flex flex-col gap-2">
-			<span class="font-medium text-lg">{date}</span>
-			{#each webinarsInDateGroup as webinar}
-				<Webinar webinarData={webinar} />
-			{/each}
-		</section>
-	{/each}
+<div class="flex flex-col">
+	<div class="flex flex-col gap-6 w-full items-center my-5 lg:my-10">
+		<div class="flex justify-start items-center w-[22rem] lg:w-[43rem] text-3xl font-bold mb-4">
+			<div class="pl-6 border-b-[5px] border-[#dd2444]">UPCOMING EVENTS</div>
+		</div>
+		{#each Object.entries(groupedWebinars) as [date, webinarsInDateGroup]}
+			<section class="flex flex-col gap-2">
+				<span class="font-medium text-lg">{date}</span>
+				{#each webinarsInDateGroup as webinar}
+					<Webinar webinarData={webinar} />
+				{/each}
+			</section>
+		{/each}
+	</div>
 </div>
