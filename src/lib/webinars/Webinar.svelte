@@ -14,6 +14,7 @@
 	import FiveThingsImage from '$lib/assets/5things_webinar.webp';
 	import HtapgImage from '$lib/assets/htapg_webinar.webp';
 	import MpsImage from '$lib/assets/mps_webinar.webp';
+	import { goto } from '$app/navigation';
 
 	const [emailValidity, validateEmail] = createFieldValidator(
 		requiredValidator(),
@@ -127,7 +128,8 @@
 		console.log(everwebinarResponse);
 		if (everwebinarResponse.status === 'success') {
 			console.log('success everwebinar');
-			await submitLawmatics();
+			await goto('https://milvidlaw.com/next-webinar/thank-you-for-registration/');
+			//await submitLawmatics();
 		}
 	};
 
