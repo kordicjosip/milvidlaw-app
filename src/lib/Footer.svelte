@@ -10,7 +10,7 @@
 
 <hr />
 <div class="flex flex-col items-center justify-center">
-	<span class="m-3 text-neutral-700">OFFICE LOCATIONS</span>
+	<span class="m-10 text-neutral-700">OFFICE LOCATIONS</span>
 	<div class="grid grid-cols-2 lg:grid-cols-3 gap-5 text-sm lg:text-base">
 		<div class="">
 			<div class="flex">
@@ -77,7 +77,7 @@
 		</div>
 	</div>
 </div>
-<div class="text-xs text-neutral-700 m-5">
+<div class="text-xs text-neutral-700 mx-5 mt-10 mb-5">
 	Copyright © 2014 - {currentYear} Milvidskiy Law Group P.C. | Attorney Advertising |
 	<button on:click={() => (showModalDisclaimer = true)}>Disclaimer</button>
 	| <button on:click={() => (showModalPrivacyPolicy = true)}> Privacy Policy </button>
@@ -85,4 +85,3 @@
 
 <ModalDisclaimer bind:showModalDisclaimer />
 <ModalPrivacyPolicy bind:showModalPrivacyPolicy />
-```

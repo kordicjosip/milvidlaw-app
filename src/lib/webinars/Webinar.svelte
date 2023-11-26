@@ -191,7 +191,7 @@
 			<span class="font-bold text-2xl leading-7 lg:text-4xl text-neutral-900"
 				>{dateCardDate.split(' ')[2]}</span
 			>
-			<span class="tracking-wide text-neutral-900 lg:text-base text-xs"
+			<span class="tracking-wide text-neutral-900 lg:text-sm text-xs"
 				>{formattedWebinarDay.split(' ').pop()}</span
 			>
 		</div>
@@ -303,7 +303,7 @@
 							use:validateFirstName={first_name}
 						/>
 						{#if $firstNameValidity.dirty && !$firstNameValidity.valid}
-							<span class="table-cell absolute text-neutral-700 text-[0.5rem] italic px-2">
+							<span class="table-cell absolute text-red-600 text-[0.6rem] italic px-2">
 								* {$firstNameValidity.message}
 							</span>
 						{/if}
@@ -319,7 +319,7 @@
 							use:validateLastName={last_name}
 						/>
 						{#if $lastNameValidity.dirty && !$lastNameValidity.valid}
-							<span class="table-cell absolute text-neutral-700 text-[0.5rem] italic px-2">
+							<span class="table-cell absolute text-red-600 text-[0.6rem] italic px-2">
 								* {$lastNameValidity.message}
 							</span>
 						{/if}
@@ -335,7 +335,7 @@
 							use:validateEmail={email}
 						/>
 						{#if $emailValidity.dirty && !$emailValidity.valid}
-							<span class="table-cell absolute text-neutral-700 text-[0.5rem] italic px-2">
+							<span class="table-cell absolute text-red-600 text-[0.6rem] italic px-2">
 								{$emailValidity.message}
 							</span>
 						{/if}
