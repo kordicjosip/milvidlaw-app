@@ -11,6 +11,10 @@
 	import { slide } from 'svelte/transition';
 	import { page } from '$app/stores';
 
+	import FiveThingsImage from '$lib/assets/5things_webinar.webp';
+	import HtapgImage from '$lib/assets/htapg_webinar.webp';
+	import MpsImage from '$lib/assets/mps_webinar.webp';
+
 	const [emailValidity, validateEmail] = createFieldValidator(
 		requiredValidator(),
 		emailValidator()
@@ -43,16 +47,27 @@
 	let isOpen = false;
 
 	let webinarTypeName: string;
+	let webinarShortDesc: string;
+	let webinarImage: object;
 	webinarTypeName = webinarData.name.split(' ')[0];
 	switch (webinarTypeName) {
 		case '[MPS]':
 			webinarTypeName = 'Medicaid Planning Strategies';
+			webinarShortDesc =
+				'Discover how to protect your home and life savings from nursing home expenses. Free educational webinar presented by Andrey Milvidskiy, Esq.';
+			webinarImage = MpsImage;
 			break;
 		case '[Bi-Weekly]':
 			webinarTypeName = '5 Things to Know About Estate Planning Once You Turn Sixty-Five';
+			webinarShortDesc =
+				'Free educational webinar about estate planning, wills and living trusts, long-term care and Medicaid planning. Presented by Andrey Milvidskiy, Esq. ';
+			webinarImage = FiveThingsImage;
 			break;
 		case '[HTAPG]':
 			webinarTypeName = 'How to Avoid Probate and Guardianship';
+			webinarShortDesc =
+				'Learn about what probate and adult guardianship are and how you can avoid those proceedings. Free educational webinar presented by Kevin R. Cropsey, Esq.';
+			webinarImage = HtapgImage;
 			break;
 		default:
 			break;
@@ -150,11 +165,11 @@
 </script>
 
 <div
-	class="relative flex flex-col rounded-md w-[22rem] lg:w-[32rem] bg-white border-l-[6px] {webinarType} border border-neutral-400"
+	class="relative flex flex-col rounded-md w-[22rem] lg:w-[43rem] bg-white border-l-[6px] {webinarType} border border-neutral-400"
 >
 	<div
 		id="Webinar header"
-		class="grid-container grid-cols-[30%,70%,0%] lg:grid-cols-[25%,65%,0%] items-center my-3"
+		class="grid-container grid-cols-[30%,70%,0%] lg:grid-cols-[20%,45%,35%] items-center my-5"
 	>
 		<div
 			id="Date card"
@@ -174,6 +189,10 @@
 		<div class="flex flex-col">
 			<div class="font-bold leading-5 mb-1">
 				{webinarTypeName}
+			</div>
+
+			<div class="text-sm mb-1">
+				{webinarShortDesc}
 			</div>
 
 			<div class="flex items-center gap-1 lg:text-base text-sm">
@@ -200,7 +219,32 @@
 			</div>
 		</div>
 		<div />
-		<div class="absolute bottom-0 right-0">
+		<div class="hidden lg:block absolute right-0 top-0 w-52">
+			<img src={webinarImage} alt="Webinar Image" class="h-[8.25rem] w-full rounded-tr" />
+			<button
+				class="flex transition lg:w-full items-center justify-center h-8 lg:h-10 rounded-br text-white font-bold text-xs lg:text-base"
+				on:click={toggle}
+				class:bg-plava={!isOpen}
+				class:hover:bg-[#1e3d5c]={!isOpen}
+				class:bg-neutral-400={isOpen}
+				class:hover:bg-neutral-500={isOpen}
+				aria-expanded={isOpen}
+			>
+				{registerButton}<svg
+					style="tran"
+					width="18"
+					height="18"
+					fill="none"
+					stroke-linecap="round"
+					stroke-linejoin="round"
+					stroke-width="2"
+					viewBox="0 0 24 24"
+					transform="rotate(90)"
+					stroke="currentColor"><path d="M9 5l7 7-7 7" /></svg
+				>
+			</button>
+		</div>
+		<div class="absolute block lg:hidden bottom-0 right-0">
 			<button
 				class="flex w-[8.5rem] transition lg:w-40 items-center justify-center h-8 lg:h-10 rounded rounded-bl-none rounded-tr-none text-white font-bold text-xs lg:text-base"
 				on:click={toggle}
