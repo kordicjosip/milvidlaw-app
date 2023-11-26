@@ -28,6 +28,7 @@
 
 		return grouped;
 	}
+	console.log(groupedWebinars);
 </script>
 
 <svelte:head>

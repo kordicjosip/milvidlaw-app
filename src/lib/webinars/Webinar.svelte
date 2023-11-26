@@ -72,11 +72,15 @@
 		default:
 			break;
 	}
-	let webinarDay: string;
-	webinarDay = webinarData.date_time.split(' ')[0];
-	webinarDay = new Date(webinarDay).toLocaleDateString('en-US', {
-		weekday: 'long'
-	});
+	let webinarDay: string | Date;
+	webinarDay = webinarData.date_time;
+	webinarDay = new Date(webinarDay);
+	let formattedWebinarDay = new Intl.DateTimeFormat('en-US', {
+		weekday: 'long',
+		month: 'long'
+	}).format(webinarDay);
+	console.log(formattedWebinarDay);
+
 	let webinarTimeUS: string;
 	webinarTimeUS = webinarData.date_time.split(' ')[1];
 	webinarTimeUS = new Date(`2021-11-15T${webinarTimeUS}`).toLocaleTimeString('en-US', {
@@ -183,7 +187,9 @@
 			<span class="font-bold text-2xl leading-7 lg:text-4xl text-neutral-900"
 				>{dateCardDate.split(' ')[1]}</span
 			>
-			<span class="tracking-wide text-neutral-900 lg:text-base text-xs">{webinarDay}</span>
+			<span class="tracking-wide text-neutral-900 lg:text-base text-xs"
+				>{formattedWebinarDay.split(' ').pop()}</span
+			>
 		</div>
 
 		<div class="flex flex-col">
@@ -212,7 +218,9 @@
 						/>
 					</svg>
 				</span>
-				<span class="font-medium hidden lg:block">{webinarDay}, {webinarTimeUS}</span>
+				<span class="font-medium hidden lg:block"
+					>{formattedWebinarDay.split(' ')[1]}, {webinarTimeUS}</span
+				>
 				<div class="font-medium flex lg:hidden">
 					{webinarTimeUS}
 				</div>
