@@ -73,8 +73,7 @@
 			break;
 	}
 	let webinarDay: string | Date;
-	webinarDay = webinarData.date_time;
-	webinarDay = new Date(webinarDay);
+	webinarDay = new Date(webinarData.date_time);
 	let formattedWebinarDay = new Intl.DateTimeFormat('en-US', {
 		weekday: 'long',
 		month: 'long'
@@ -87,12 +86,15 @@
 		hour: 'numeric',
 		minute: '2-digit'
 	});
-	let dateCardDate: any;
-	dateCardDate = new Date(webinarData.date_time.split(' ')[0]);
-	dateCardDate = new Date(dateCardDate).toLocaleDateString('en-US', {
-		month: 'short',
+
+	let dateCardDate: Date | string;
+	dateCardDate = new Date(webinarData.date_time);
+	dateCardDate = new Intl.DateTimeFormat('en-US', {
+		weekday: 'long',
+		month: 'long',
 		day: 'numeric'
-	});
+	}).format(dateCardDate);
+	console.log(dateCardDate);
 
 	let webinar_id: number = webinarData.id;
 	let schedule: number = webinarData.schedule;
@@ -181,11 +183,11 @@
 		>
 			<span
 				class="w-full {dateCard} text-white flex justify-center text-sm lg:text-base font-medium rounded-t-md"
-				>{dateCardDate.split(' ')[0].toUpperCase()}</span
+				>{dateCardDate.split(' ')[1].substring(0, 3).toUpperCase()}</span
 			>
 
 			<span class="font-bold text-2xl leading-7 lg:text-4xl text-neutral-900"
-				>{dateCardDate.split(' ')[1]}</span
+				>{dateCardDate.split(' ')[2]}</span
 			>
 			<span class="tracking-wide text-neutral-900 lg:text-base text-xs"
 				>{formattedWebinarDay.split(' ').pop()}</span
