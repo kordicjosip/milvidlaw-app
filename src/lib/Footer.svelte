@@ -28,7 +28,9 @@
 					</g></svg
 				><span class="font-bold mb-1">Paramus</span>
 			</div>
-			<div class="pl-4">29 N Farview Ave<br />Paramus, NJ 07652<br />(201) 380-2000</div>
+			<div class="pl-4">
+				29 N Farview Ave<br />Paramus, NJ 07652<br /><a href="tel:2013802000">(201) 380-2000</a>
+			</div>
 		</div>
 
 		<div class="">
@@ -48,7 +50,9 @@
 				><span class="font-bold mb-1">Morristown</span>
 			</div>
 			<div class="pl-4">
-				163 Madison Ave<br />2nd Fl, Ste 220<br />Morristown, NJ 07960<br />(973) 988-9200
+				163 Madison Ave<br />2nd Fl, Ste 220<br />Morristown, NJ 07960<br /><a href="tel:9739889200"
+					>(973) 988-9200</a
+				>
 			</div>
 		</div>
 
@@ -70,8 +74,9 @@
 					><span class="font-bold mb-1">Red Bank</span>
 				</div>
 				<div class="pl-4">
-					331 Newman Springs Rd<br />Bldg 1, 4th Fl, Ste 143<br />Red Bank, NJ 07701<br />(732)
-					377-4200
+					331 Newman Springs Rd<br />Bldg 1, 4th Fl, Ste 143<br />Red Bank, NJ 07701<br /><a
+						href="tel:732374200">(732) 377-4200</a
+					>
 				</div>
 			</div>
 		</div>
