@@ -102,8 +102,8 @@
 
 	let utmSource: string | null;
 
-	let registerButton: string;
-	$: registerButton = isOpen ? 'CANCEL' : 'SAVE YOUR SEAT';
+	let registerButtonText: string;
+	$: registerButtonText = isOpen ? 'CANCEL' : 'SAVE YOUR SEAT';
 	let submitButtonTitle: string | null;
 	$: submitButtonTitle =
 		!$emailValidity.valid || !$firstNameValidity.valid || !$lastNameValidity.valid
@@ -222,16 +222,18 @@
 		<div class="hidden lg:block absolute right-0 top-0 w-52">
 			<img src={webinarImage} alt="Webinar Image" class="h-[8.25rem] w-full rounded-tr" />
 			<button
-				class="flex transition lg:w-full items-center justify-center h-8 lg:h-10 rounded-br text-white font-bold text-xs lg:text-base"
+				class="flex transition duration-500 lg:w-full items-center justify-center h-8 lg:h-10 text-white font-bold text-xs lg:text-base"
 				on:click={toggle}
 				class:bg-plava={!isOpen}
 				class:hover:bg-[#1e3d5c]={!isOpen}
 				class:bg-neutral-400={isOpen}
 				class:hover:bg-neutral-500={isOpen}
+				class:rounded-br={!isOpen}
+				class:rounded-bl={isOpen}
 				aria-expanded={isOpen}
 			>
-				{registerButton}<svg
-					style="tran"
+				{registerButtonText}<svg
+					style=""
 					width="18"
 					height="18"
 					fill="none"
@@ -254,7 +256,7 @@
 				class:hover:bg-neutral-500={isOpen}
 				aria-expanded={isOpen}
 			>
-				{registerButton}<svg
+				{registerButtonText}<svg
 					style="tran"
 					width="18"
 					height="18"
@@ -348,7 +350,7 @@
 						type="button"
 						on:click={submitRegistration}>SUBMIT</button
 					>
-					<span class="text-center lg:text-base text-xs mx-5"
+					<span class="text-center lg:text-base text-xs mx-5 lg:mx-16"
 						>If you need to make changes to your reservation, please call our offices at (201)
 						380-2000.</span
 					>
