@@ -342,7 +342,7 @@
 						webinar.</label
 					>
 				</div>
-				<div class="flex flex-col items-center w-full justify-center mt-3 mb-12">
+				<div class="flex flex-col items-center w-full justify-center mt-3 mb-12 lg:mb-3">
 					<button
 						title={submitButtonTitle}
 						disabled={!$emailValidity.valid | !$firstNameValidity.valid | !$lastNameValidity.valid}
