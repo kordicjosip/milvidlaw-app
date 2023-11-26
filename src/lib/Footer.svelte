@@ -12,7 +12,7 @@
 <div class="flex flex-col items-center justify-center">
 	<span class="m-10 text-neutral-700">OFFICE LOCATIONS</span>
 	<div class="flex flex-col lg:flex-row gap-5 lg:gap-16 text-sm lg:text-base">
-		<div class="">
+		<div class="w-[11rem]">
 			<div class="flex justify-center">
 				<svg class="w-4" fill="#000000" viewBox="0 0 395.71 395.71" xml:space="preserve"
 					><g id="SVGRepo_bgCarrier" stroke-width="0" /><g
@@ -35,7 +35,7 @@
 			</div>
 		</div>
 
-		<div class="">
+		<div class="w-[11rem]">
 			<div class="flex justify-center">
 				<svg class="w-4" fill="#000000" viewBox="0 0 395.71 395.71" xml:space="preserve"
 					><g id="SVGRepo_bgCarrier" stroke-width="0" /><g
@@ -57,7 +57,7 @@
 			</div>
 		</div>
 
-		<div class="">
+		<div class="w-[11rem]">
 			<div class="flex justify-center">
 				<svg class="w-4" fill="#000000" viewBox="0 0 395.71 395.71" xml:space="preserve"
 					><g id="SVGRepo_bgCarrier" stroke-width="0" /><g
