@@ -13,8 +13,8 @@ export interface webinarData {
 }
 
 export interface webinarRegisterRequest {
-	webinar_id: number;
-	schedule: number;
+	webinar_id: string | number;
+	schedule: string | number;
 	first_name: string;
 	last_name: string;
 	phone: string;

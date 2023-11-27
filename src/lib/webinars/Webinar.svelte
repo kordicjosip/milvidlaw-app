@@ -44,6 +44,7 @@
 	const close = () => (isOpen = false);
 
 	let webinarType: webinarTypes;
+	let webinarRoute: string;
 	let dateCard: webinarTypes;
 	let isOpen = false;
 
@@ -95,86 +96,22 @@
 		day: 'numeric'
 	}).format(dateCardDate);
 
-	let webinar_id: number = webinarData.id;
-	let schedule: number = webinarData.schedule;
-	let first_name: string;
-	let last_name: string;
-	let phone: string;
-	let email: string;
-
-	let everwebinarResponse: any;
-	let lawmaticsResponse: any;
-
 	let utmSource: string | null;
-
-	let registerButtonText: string;
-	$: registerButtonText = isOpen ? 'CANCEL' : 'SAVE YOUR SEAT';
-	let submitButtonTitle: string | null;
-	$: submitButtonTitle =
-		!$emailValidity.valid || !$firstNameValidity.valid || !$lastNameValidity.valid
-			? 'Please fill out all required fields'
-			: '';
-	export const submitRegistration = async () => {
-		everwebinarResponse = await registerWebinar({
-			webinar_id: webinar_id,
-			schedule: schedule,
-			first_name: first_name,
-			last_name: last_name,
-			phone: phone,
-			email: email
-		});
-		console.log(everwebinarResponse);
-		if (everwebinarResponse.status === 'success') {
-			console.log('success everwebinar');
-			await submitRegistrationDatabase();
-			await goto('https://milvidlaw.com/next-webinar/thank-you-for-registration/');
-			//await submitLawmatics();
-		}
-	};
-
-	let webinarDatabaseData: webinarRegisterDatabase;
-	export const submitRegistrationDatabase = async () => {
-		webinarDatabaseData = await registerWebinarDatabase({
-			first_name: first_name,
-			last_name: last_name,
-			email: email,
-			phone: phone,
-			webinar: webinarTypeName,
-			ew_live: everwebinarResponse.user['live_room_url'],
-			ew_replay: everwebinarResponse.user['replay_room_url']
-		});
-	};
-
-	export const submitLawmatics = async () => {
-		lawmaticsResponse = await registerLawmatics({
-			first_name: first_name,
-			last_name: last_name,
-			match_contact_by: 'email',
-			email: email,
-			phone: phone,
-			practice_area_id: 1690,
-			custom_fields: [
-				{ id: 28272, value: webinarData.date_time },
-				{ id: 288415, value: utmSource },
-				{ id: 29064, value: webinarData.name },
-				{ id: 32600, value: everwebinarResponse.user['live_room_url'] },
-				{ id: 32601, value: everwebinarResponse.user['replay_room_url'] }
-			]
-		});
-		console.log(lawmaticsResponse);
-	};
 
 	onMount(() => {
 		itemsCloseCallback.push(close);
 		if (webinarData.name.startsWith('[B')) {
 			webinarType = borderColor.ft;
 			dateCard = dateCardColor.ft;
+			webinarRoute = '5-things';
 		} else if (webinarData.name.startsWith('[M')) {
 			webinarType = borderColor.mps;
 			dateCard = dateCardColor.mps;
+			webinarRoute = 'mps';
 		} else if (webinarData.name.startsWith('[H')) {
 			webinarType = borderColor.htapg;
 			dateCard = dateCardColor.htapg;
+			webinarRoute = 'htapg';
 		}
 		utmSource = $page.url.searchParams.get('utm_source') || 'Web';
 		//utmSource je utm_source iz url-a webinar.milvidlaw.com/?utm_source=google
@@ -182,6 +119,7 @@
 	onDestroy(() => {
 		console.log(itemsCloseCallback.findIndex((callback) => close === callback));
 	});
+	console.log(webinarData);
 </script>
 
 <div
@@ -246,153 +184,27 @@
 		<div class="hidden lg:block absolute right-0 top-0 w-52">
 			<img src={webinarImage} alt="Webinar" class="h-[8.25rem] w-full rounded-tr" />
 			<button
-				class="flex transition duration-500 lg:w-full items-center justify-center h-8 lg:h-10 text-white font-bold text-xs lg:text-base"
-				on:click={toggle}
-				class:bg-plava={!isOpen}
-				class:hover:bg-[#1e3d5c]={!isOpen}
-				class:bg-neutral-400={isOpen}
-				class:hover:bg-neutral-500={isOpen}
-				class:rounded-br={!isOpen}
-				class:rounded-bl={isOpen}
+				class="flex transition duration-500 lg:w-full items-center justify-center h-8 lg:h-10 text-white font-bold text-xs lg:text-base bg-plava hover:bg-[#1e3d5c]"
+				on:click={() =>
+					goto(`/${webinarRoute}?webinar_id=${webinarData.id}&schedule=${webinarData.schedule}`)}
 				aria-expanded={isOpen}
 			>
-				{registerButtonText}<svg
-					style=""
-					width="18"
-					height="18"
-					fill="none"
-					stroke-linecap="round"
-					stroke-linejoin="round"
-					stroke-width="2"
-					viewBox="0 0 24 24"
-					transform="rotate(90)"
-					stroke="currentColor"><path d="M9 5l7 7-7 7" /></svg
-				>
+				Save Your Seat
 			</button>
 		</div>
 		<div class="absolute block lg:hidden bottom-0 right-0">
 			<button
-				class="flex w-[8.5rem] transition lg:w-40 items-center justify-center h-8 lg:h-10 rounded rounded-bl-none rounded-tr-none text-white font-bold text-xs lg:text-base"
-				on:click={toggle}
-				class:bg-plava={!isOpen}
-				class:hover:bg-[#1e3d5c]={!isOpen}
-				class:bg-neutral-400={isOpen}
-				class:hover:bg-neutral-500={isOpen}
-				aria-expanded={isOpen}
+				class="flex w-[8.5rem] transition lg:w-40 items-center justify-center h-8 lg:h-10 rounded rounded-bl-none rounded-tr-none text-white font-bold text-xs lg:text-base bg-plava"
+				on:click={() =>
+					goto(`/${webinarRoute}?webinar_id=${webinarData.id}&schedule=${webinarData.schedule}`)}
 			>
-				{registerButtonText}<svg
-					style="tran"
-					width="18"
-					height="18"
-					fill="none"
-					stroke-linecap="round"
-					stroke-linejoin="round"
-					stroke-width="2"
-					viewBox="0 0 24 24"
-					transform="rotate(90)"
-					stroke="currentColor"><path d="M9 5l7 7-7 7" /></svg
-				>
+				Save Your Seat
 			</button>
 		</div>
 	</div>
-
-	{#if isOpen}
-		<ul transition:slide={{ duration: 300 }}>
-			<div class="flex justify-center font-bold text-xl">Register for the Webinar</div>
-			<hr
-				class="mx-10 my-3"
-				style="height:1px;border:none;color:#d5d5d5;background-color:#d5d5d5;"
-			/>
-			<form method="POST" class="flex flex-col items-center">
-				<div class="grid w-full gap-3">
-					<div class="table relative mx-4">
-						<input
-							bind:value={first_name}
-							class="table-cell w-full lg:p-3 p-3 lg:h-9 h-8 border rounded-md text-[#333333]"
-							type="text"
-							name="firstname"
-							placeholder="*First Name"
-							use:validateFirstName={first_name}
-						/>
-						{#if $firstNameValidity.dirty && !$firstNameValidity.valid}
-							<span class="table-cell absolute text-red-600 text-[0.6rem] italic px-2">
-								* {$firstNameValidity.message}
-							</span>
-						{/if}
-					</div>
-
-					<div class="table relative mx-4">
-						<input
-							bind:value={last_name}
-							class="table-cell w-full lg:p-3 p-3 lg:h-9 h-8 border rounded-md text-[#333333]"
-							type="text"
-							name="lastname"
-							placeholder="*Last Name"
-							use:validateLastName={last_name}
-						/>
-						{#if $lastNameValidity.dirty && !$lastNameValidity.valid}
-							<span class="table-cell absolute text-red-600 text-[0.6rem] italic px-2">
-								* {$lastNameValidity.message}
-							</span>
-						{/if}
-					</div>
-
-					<div class="table relative mx-4">
-						<input
-							bind:value={email}
-							class="table-cell w-full lg:p-3 p-3 lg:h-9 h-8 border rounded-md text-[#333333]"
-							type="email"
-							name="email"
-							placeholder="*E-mail"
-							use:validateEmail={email}
-						/>
-						{#if $emailValidity.dirty && !$emailValidity.valid}
-							<span class="table-cell absolute text-red-600 text-[0.6rem] italic px-2">
-								{$emailValidity.message}
-							</span>
-						{/if}
-					</div>
-
-					<input
-						bind:value={phone}
-						class="block lg:h-9 h-8 border rounded-md lg:p-3 p-3 mx-4 text-[#333333]"
-						type="text"
-						name="phone"
-						id="phone"
-						placeholder="Phone (optional)"
-					/>
-					<label for="phone" class="text-neutral-700 text-xs italic px-5 -translate-y-2.5">
-						We will only use your phone number to send you one reminder 15 minutes before the
-						webinar.</label
-					>
-				</div>
-				<div class="flex flex-col items-center w-full justify-center mt-3 mb-12 lg:mb-3">
-					<button
-						title={submitButtonTitle}
-						disabled={!$emailValidity.valid | !$firstNameValidity.valid | !$lastNameValidity.valid}
-						class="lg:w-24 lg:h-10 w-[5.5rem] h-9 bg-red-600 hover:bg-red-500 rounded text-white font-bold mb-3 disabled:opacity-50 disabled:cursor-not-allowed"
-						type="button"
-						on:click={submitRegistration}>SUBMIT</button
-					>
-					<span class="text-center lg:text-base text-xs mx-5 lg:mx-16"
-						>If you need to make changes to your reservation, please call our offices at (201)
-						380-2000.</span
-					>
-				</div>
-			</form>
-		</ul>
-	{/if}
 </div>
 
 <style>
-	svg {
-		transition: transform 0.2s ease-in;
-	}
-
-	[aria-expanded='true'] svg {
-		transform: rotate(0.75turn);
-	}
-
 	.grid-container {
 		display: grid;
 	}

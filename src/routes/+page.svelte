@@ -72,7 +72,7 @@
 					elder law, estate planning, wills and trusts, asset protection, long-term care and
 					Medicaid planning.</span
 				>
-				<span class="hidden lg:block"
+				<span class="hidden lg:inline"
 					>These sessions are designed to inform and empower you with essential legal knowledge.
 					Whether you're planning for the future or navigating current legal challenges, our
 					webinars offer guidance and clarity.</span
