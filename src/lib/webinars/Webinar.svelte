@@ -1,27 +1,12 @@
-<script context="module">
-	const itemsCloseCallback = [];
-</script>
-
 <script lang="ts">
-	import type { webinarTypes, webinarData, webinarRegisterDatabase } from '$lib/shared';
-	import { onMount, onDestroy } from 'svelte';
-	import { registerLawmatics, registerWebinar, registerWebinarDatabase } from '$lib/apiPozivi';
-	import { emailValidator, requiredValidator } from '$lib/formValidation/validators.js';
-	import { createFieldValidator } from '$lib/formValidation/validation.js';
-	import { slide } from 'svelte/transition';
+	import type { webinarTypes, webinarData } from '$lib/shared';
+	import { onMount } from 'svelte';
 	import { page } from '$app/stores';
 
 	import FiveThingsImage from '$lib/assets/5things_webinar.webp';
 	import HtapgImage from '$lib/assets/htapg_webinar.webp';
 	import MpsImage from '$lib/assets/mps_webinar.webp';
 	import { goto } from '$app/navigation';
-
-	const [emailValidity, validateEmail] = createFieldValidator(
-		requiredValidator(),
-		emailValidator()
-	);
-	const [firstNameValidity, validateFirstName] = createFieldValidator(requiredValidator());
-	const [lastNameValidity, validateLastName] = createFieldValidator(requiredValidator());
 
 	export let webinarData: webinarData;
 
@@ -35,13 +20,6 @@
 		mps: 'bg-zuta',
 		htapg: 'bg-zelena'
 	};
-
-	const toggle = () => {
-		itemsCloseCallback.filter((callback) => close !== callback).forEach((i) => i());
-		isOpen = !isOpen;
-	};
-
-	const close = () => (isOpen = false);
 
 	let webinarType: webinarTypes;
 	let webinarRoute: string;
@@ -99,7 +77,6 @@
 	let utmSource: string | null;
 
 	onMount(() => {
-		itemsCloseCallback.push(close);
 		if (webinarData.name.startsWith('[B')) {
 			webinarType = borderColor.ft;
 			dateCard = dateCardColor.ft;
@@ -115,9 +92,6 @@
 		}
 		utmSource = $page.url.searchParams.get('utm_source') || 'Web';
 		//utmSource je utm_source iz url-a webinar.milvidlaw.com/?utm_source=google
-	});
-	onDestroy(() => {
-		console.log(itemsCloseCallback.findIndex((callback) => close === callback));
 	});
 	console.log(webinarData);
 </script>

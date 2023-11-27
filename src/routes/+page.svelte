@@ -62,7 +62,7 @@
 </svelte:head>
 <div class="flex flex-col">
 	<div class="flex flex-col gap-6 w-full items-center my-5 lg:my-10">
-		<div class="flex flex-col justify-start items-center w-[22rem] lg:w-[43rem] mb-4">
+		<div class="flex flex-col justify-start items-start w-[22rem] lg:w-[43rem] mb-4">
 			<div class="pl-6 border-b-[5px] border-[#dd2444] text-3xl font-bold mb-4">
 				UPCOMING EVENTS
 			</div>
