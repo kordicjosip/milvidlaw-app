@@ -1,6 +1,6 @@
 <script lang="ts">
 	import CheckmarkIcon from '$lib/assets/CheckmarkIcon.svelte';
-	import andrey200 from '$lib/assets/andrey200.png';
+	import kevin200 from '$lib/assets/kevin200.png';
 
 	import { emailValidator, requiredValidator } from '$lib/formValidation/validators.js';
 	import { createFieldValidator } from '$lib/formValidation/validation.js';
@@ -95,7 +95,7 @@
 	</div>
 </div>
 <hr />
-<div class="flex flex-col-reverse lg:flex-row justify-center gap-10">
+<div class="flex flex-col-reverse lg:flex-row justify-center gap-10 p-5 lg:p-0">
 	<div class="flex flex-col lg:w-2/5">
 		<div class="text-xl text-neutral-600 my-5 font-bold tracking-wide">About the webinar</div>
 		<div class="leading-6 tracking-wide mb-5">
@@ -110,27 +110,27 @@
 		<div class="flex flex-col gap-3">
 			<div class="flex items-center gap-3">
 				<div class="w-10"><CheckmarkIcon /></div>
-				<span class="italic"
+				<span class="italic w-fit"
 					>What <em class="font-medium">probate</em> is and isn’t. How to avoid probate (and whether
 					you need to avoid it).</span
 				>
 			</div>
 			<div class="flex items-center gap-3">
 				<div class="w-10"><CheckmarkIcon /></div>
-				<span class="italic"
+				<span class="italic w-fit"
 					>The difference between having a <em class="font-medium">Will</em> and a
 					<em class="font-medium">Living Trust</em>. How to determine which one you need</span
 				>
 			</div>
 			<div class="flex items-center gap-3">
 				<div class="w-10"><CheckmarkIcon /></div>
-				<span class="italic">
+				<span class="italic w-fit">
 					What is <em class="font-medium">adult guardianship</em> and why is it so important to avoid?</span
 				>
 			</div>
 			<div class="flex items-center gap-3">
 				<div class="w-10"><CheckmarkIcon /></div>
-				<span class="italic"
+				<span class="italic w-fit"
 					>The differences between a <em class="font-medium">Power of Attorney</em>, a
 					<em class="font-medium">Health Care Proxy</em>, and an
 					<em class="font-medium">Advance Directive</em>.</span
@@ -138,14 +138,14 @@
 			</div>
 			<div class="flex items-center gap-3">
 				<div class="w-10"><CheckmarkIcon /></div>
-				<span class="italic"
+				<span class="italic w-fit"
 					>The different types of a <em class="font-medium">Power of Attorney</em> (durable vs. non-durable,
 					immediate vs. springing, general vs. limited), and how to determine which one you need.</span
 				>
 			</div>
 			<div class="flex items-center gap-3">
 				<div class="w-10"><CheckmarkIcon /></div>
-				<span class="italic"
+				<span class="italic w-fit"
 					>How to protect yourself, your family, and your assets in the event of incapacity and upon
 					your death.</span
 				>
@@ -153,19 +153,19 @@
 		</div>
 
 		<div class="flex gap-5 my-5">
-			<img src={andrey200} alt="Our Presenter" width="81" />
+			<img src={kevin200} alt="Our Presenter" width="81" />
 			<div class="flex flex-col justify-evenly">
 				<div class="text-xl font-bold text-plava">About Our Presenter</div>
-				<div class="text-xl text-neutral-700">Andrey Milvidskiy, Esq.</div>
+				<div class="text-xl text-neutral-700">Kevin R. Cropsey, Esq.</div>
 			</div>
 		</div>
 
 		<div class="leading-6 tracking-wide mb-5">
-			Mr. Milvidskiy is the founder and the principal attorney of the Milvidskiy Law Group P.C., a
-			New Jersey-based firm with focus on elder law and estate planning. He is the author of the
-			book The Law of Aging: Estate Planning and Beyond. He regularly speaks on a wide range of
-			topics, including trusts and estate planning, asset protection, special needs, long-term care
-			and Medicaid planning.
+			Kevin R. Cropsey, Esq. is an associate attorney with Milvidskiy Law Group P.C. His practice is
+			concentrated on probate, estate litigation, and guardianship of incapacitated adults. Mr.
+			Cropsey offers a unique perspective on estate planning based on his experience with cases
+			where something went wrong. In this presentation, he will share his experience so that you can
+			avoid making the same mistakes when planning your estate.
 		</div>
 
 		<div class="text-xl font-bold text-plava mb-5">Contact Us</div>
