@@ -60,7 +60,7 @@
 			last_name: last_name,
 			email: email,
 			phone: phone,
-			webinar: 'HTAPG',
+			webinar: 'MPS',
 			ew_live: everwebinarResponse.user['live_room_url'],
 			ew_replay: everwebinarResponse.user['replay_room_url']
 		});
@@ -122,6 +122,36 @@
 	});
 </script>
 
+<svelte:head>
+	<script>
+		!(function (f, b, e, v, n, t, s) {
+			if (f.fbq) return;
+			n = f.fbq = function () {
+				n.callMethod ? n.callMethod.apply(n, arguments) : n.queue.push(arguments);
+			};
+			if (!f._fbq) f._fbq = n;
+			n.push = n;
+			n.loaded = !0;
+			n.version = '2.0';
+			n.queue = [];
+			t = b.createElement(e);
+			t.async = !0;
+			t.src = v;
+			s = b.getElementsByTagName(e)[0];
+			s.parentNode.insertBefore(t, s);
+		})(window, document, 'script', 'https://connect.facebook.net/en_US/fbevents.js');
+		fbq('init', '1705597013024351');
+		fbq('track', 'PageView');
+	</script>
+	<noscript
+		><img
+			height="1"
+			width="1"
+			style="display:none"
+			src="https://www.facebook.com/tr?id=1705597013024351&ev=PageView&noscript=1"
+		/></noscript
+	>
+</svelte:head>
 <div class="flex flex-col items-center text-center my-5 lg:my-8">
 	<div class="text-2xl lg:text-4xl font-bold text-neutral-700 m-3 lg:leading-10">
 		Discover How to Protect Your Home and Life <br class="hidden lg:inline" />Savings from Nursing
