@@ -28,38 +28,6 @@
 	}
 </script>
 
-<svelte:head>
-	<title>New Jersey Elder Law & Estate Planning Attorney | Milvidskiy Law Firm</title>
-	<meta name="Description" content="New Jersey Elder Law & Estate Planning Attorney" />
-	<script>
-		!(function (f, b, e, v, n, t, s) {
-			if (f.fbq) return;
-			n = f.fbq = function () {
-				n.callMethod ? n.callMethod.apply(n, arguments) : n.queue.push(arguments);
-			};
-			if (!f._fbq) f._fbq = n;
-			n.push = n;
-			n.loaded = !0;
-			n.version = '2.0';
-			n.queue = [];
-			t = b.createElement(e);
-			t.async = !0;
-			t.src = v;
-			s = b.getElementsByTagName(e)[0];
-			s.parentNode.insertBefore(t, s);
-		})(window, document, 'script', 'https://connect.facebook.net/en_US/fbevents.js');
-		fbq('init', '1705597013024351');
-		fbq('track', 'PageView');
-	</script>
-	<noscript
-		><img
-			height="1"
-			width="1"
-			style="display:none"
-			src="https://www.facebook.com/tr?id=1705597013024351&ev=PageView&noscript=1"
-		/></noscript
-	>
-</svelte:head>
 <div class="flex flex-col">
 	<div class="flex flex-col gap-6 w-full items-center my-5 lg:my-10">
 		<div class="flex flex-col justify-start items-start w-[22rem] lg:w-[43rem] mb-4">

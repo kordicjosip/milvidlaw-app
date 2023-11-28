@@ -116,9 +116,9 @@
 			minute: '2-digit',
 			hour12: true
 		});
-		webinarDateFormatted = `${weekDays[webinarDate.getDay()]} ${
+		webinarDateFormatted = `${weekDays[webinarDate.getDay()]}, ${
 			months[webinarDate.getMonth()]
-		} ${webinarDate.getDate()} at ${webinarTime}`;
+		} ${webinarDate.getDate()}, at ${webinarTime}`;
 	});
 </script>
 
