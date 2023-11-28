@@ -86,13 +86,14 @@
 	});
 </script>
 
-<div class="flex flex-col items-center text-center my-8">
-	<div class="text-4xl font-bold text-neutral-700 m-3 leading-10">
+<div class="flex flex-col items-center text-center my-5">
+	<div class="text-3xl lg:text-4xl font-bold text-neutral-700 m-3 leading-10">
 		Discover How to Protect Your Home and Life<br /> Savings from Nursing Home Expenses
 	</div>
-	<div class="text-2xl text-neutral-600">
+	<div class="text-2xl text-neutral-600 mb-5">
 		Medicaid Planning Strategies in New Jersey and New York
 	</div>
+	<div class="text-xl text-neutral-600">FREE EDUCATIONAL WEBINAR</div>
 </div>
 <hr />
 <div class="flex flex-col-reverse lg:flex-row justify-center gap-10 p-5 lg:p-0">
@@ -254,4 +255,11 @@
 			</form>
 		</ul>
 	</div>
+</div>
+<div class="flex items-center justify-center m-10">
+	<button
+		on:click={() => goto('/')}
+		class="border-plava border-4 rounded-md py-2 px-3 text-plava font-bold hover:text-white hover:bg-plava transition-all"
+		>Go back</button
+	>
 </div>
