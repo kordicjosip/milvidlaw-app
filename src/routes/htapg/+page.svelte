@@ -122,17 +122,17 @@
 	});
 </script>
 
-<div class="flex flex-col items-center text-center my-8">
-	<div class="text-3xl lg:text-4xl font-bold text-neutral-700 m-3 leading-10">
-		Avoid Probate and Guardianship<br />in 5 Easy Steps
+<div class="flex flex-col items-center text-center my-5 lg:my-8">
+	<div class="text-2xl lg:text-4xl font-bold text-neutral-700 m-3 lg:leading-10">
+		Avoid Probate and Guardianship <br class="hidden lg:inline" />in 5 Easy Steps
 	</div>
-	<div class="text-2xl text-neutral-600 mb-5">
+	<div class="text-xl lg:text-2xl text-neutral-600 mb-5">
 		Secrets of Good Estate Planning in New Jersey and New York
 	</div>
-	<div class="text-xl text-neutral-600">FREE EDUCATIONAL WEBINAR</div>
+	<div class="text-lg lg:text-xl text-neutral-600">FREE EDUCATIONAL WEBINAR</div>
 </div>
 <hr />
-<div class="flex flex-col-reverse lg:flex-row justify-center gap-10 p-5 lg:p-0">
+<div class="flex flex-col-reverse lg:flex-row justify-center gap-10 px-5 lg:p-0">
 	<div class="flex flex-col lg:w-2/5">
 		<div class="text-xl text-neutral-600 my-5 font-bold tracking-wide">About the webinar</div>
 		<div class="leading-6 tracking-wide mb-5">
@@ -220,7 +220,7 @@
 				Register for the Webinar
 			</div>
 			{#if webinarDateFormatted !== undefined}
-				<div class="flex justify-center text-center text-lg text-white mb-3">
+				<div class="flex justify-center text-center text-[1.1rem] text-white mb-3">
 					{webinarDateFormatted}
 				</div>
 			{:else}
