@@ -208,7 +208,7 @@
 				Register for the Webinar
 			</div>
 			{#if webinarDateFormatted !== undefined}
-				<div class="flex justify-center text-center text-[1.1rem] text-white mb-3">
+				<div class="flex justify-center text-center text-base text-white mb-3">
 					{webinarDateFormatted}
 				</div>
 			{:else}
