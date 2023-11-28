@@ -35,3 +35,8 @@ export const registerLawmatics = async (
 	});
 	return await response.json();
 };
+
+export const getWebinarData = async (webinar_id: string | null): Promise<any> => {
+	const response = await fetch(`/api/webinars/getWebinarData/${webinar_id}`);
+	return await response.json();
+};

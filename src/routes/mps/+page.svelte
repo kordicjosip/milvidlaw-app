@@ -6,7 +6,12 @@
 	import { createFieldValidator } from '$lib/formValidation/validation.js';
 	import { onMount } from 'svelte';
 	import { page } from '$app/stores';
-	import { registerLawmatics, registerWebinar, registerWebinarDatabase } from '$lib/apiPozivi';
+	import {
+		getWebinarData,
+		registerLawmatics,
+		registerWebinar,
+		registerWebinarDatabase
+	} from '$lib/apiPozivi';
 	import { goto } from '$app/navigation';
 	import type { webinarRegisterDatabase } from '$lib/shared';
 
@@ -79,10 +84,12 @@
 	// 	});
 	// 	console.log(lawmaticsResponse);
 	// };
-
-	onMount(() => {
+	let webinarData;
+	onMount(async () => {
 		webinar_id = $page.url.searchParams.get('webinar_id');
 		schedule = $page.url.searchParams.get('schedule');
+		webinarData = await getWebinarData(webinar_id);
+		console.log(webinarData);
 	});
 </script>
 
