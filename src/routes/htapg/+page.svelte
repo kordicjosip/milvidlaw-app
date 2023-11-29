@@ -6,7 +6,12 @@
 	import { createFieldValidator } from '$lib/formValidation/validation.js';
 	import { onMount } from 'svelte';
 	import { page } from '$app/stores';
-	import { registerLawmatics, registerWebinar, registerWebinarDatabase } from '$lib/apiPozivi';
+	import {
+		getWebinarData,
+		registerLawmatics,
+		registerWebinar,
+		registerWebinarDatabase
+	} from '$lib/apiPozivi';
 	import { goto } from '$app/navigation';
 	import type { webinarRegisterDatabase } from '$lib/shared';
 
@@ -80,22 +85,85 @@
 	// 	console.log(lawmaticsResponse);
 	// };
 
-	onMount(() => {
+	let webinarData: any;
+	let webinarDate;
+	let webinarTime;
+	let webinarDateFormatted: any;
+	let weekDays = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+	let months = [
+		'January',
+		'February',
+		'March',
+		'April',
+		'May',
+		'June ',
+		'July',
+		'August',
+		'September',
+		'October',
+		'November',
+		'December '
+	];
+
+	onMount(async () => {
 		webinar_id = $page.url.searchParams.get('webinar_id');
 		schedule = $page.url.searchParams.get('schedule');
+		webinarData = await getWebinarData(webinar_id);
+		webinarDate = webinarData[0]['date_time'];
+		webinarDate = new Date(webinarDate);
+		webinarTime = webinarDate.toLocaleTimeString('en-US', {
+			hour: 'numeric',
+			minute: '2-digit',
+			hour12: true
+		});
+		webinarDateFormatted = `${weekDays[webinarDate.getDay()]}, ${
+			months[webinarDate.getMonth()]
+		} ${webinarDate.getDate()}, at ${webinarTime}`;
 	});
 </script>
 
-<div class="flex flex-col items-center text-center my-8">
-	<div class="text-4xl font-bold text-neutral-700 m-3 leading-10">
-		Avoid Probate and Guardianship<br />in 5 Easy Steps
+<svelte:head>
+	<script>
+		!(function (f, b, e, v, n, t, s) {
+			if (f.fbq) return;
+			n = f.fbq = function () {
+				n.callMethod ? n.callMethod.apply(n, arguments) : n.queue.push(arguments);
+			};
+			if (!f._fbq) f._fbq = n;
+			n.push = n;
+			n.loaded = !0;
+			n.version = '2.0';
+			n.queue = [];
+			t = b.createElement(e);
+			t.async = !0;
+			t.src = v;
+			s = b.getElementsByTagName(e)[0];
+			s.parentNode.insertBefore(t, s);
+		})(window, document, 'script', 'https://connect.facebook.net/en_US/fbevents.js');
+		fbq('init', '1705597013024351');
+		fbq('track', 'PageView');
+	</script>
+	<noscript
+		><img
+			height="1"
+			width="1"
+			style="display:none"
+			src="https://www.facebook.com/tr?id=1705597013024351&ev=PageView&noscript=1"
+		/></noscript
+	>
+</svelte:head>
+
+<div class="flex flex-col items-center text-center my-5 lg:my-8">
+	<div class="text-2xl lg:text-4xl font-bold text-neutral-700 m-3 lg:leading-10">
+		Avoid Probate and Guardianship <br class="hidden lg:inline" />in 5 Easy Steps
 	</div>
-	<div class="text-2xl text-neutral-600">
+	<div class="text-xl lg:text-2xl text-neutral-600 mb-5">
 		Secrets of Good Estate Planning in New Jersey and New York
 	</div>
+	<div class="text-lg lg:text-xl text-neutral-600">FREE EDUCATIONAL WEBINAR</div>
 </div>
 <hr />
-<div class="flex flex-col-reverse lg:flex-row justify-center gap-10 p-5 lg:p-0">
+<div class="flex flex-col-reverse lg:flex-row justify-center gap-10 px-5 lg:p-0">
 	<div class="flex flex-col lg:w-2/5">
 		<div class="text-xl text-neutral-600 my-5 font-bold tracking-wide">About the webinar</div>
 		<div class="leading-6 tracking-wide mb-5">
@@ -179,14 +247,28 @@
 
 	<div class="lg:w-1/4">
 		<ul class="bg-plava rounded-3xl p-5 my-5 lg:sticky lg:top-10">
-			<div class="flex justify-center font-bold text-xl text-white">Register for the Webinar</div>
+			<div class="flex justify-center font-bold text-xl text-white mb-3">
+				Register for the Webinar
+			</div>
+			{#if webinarDateFormatted !== undefined}
+				<div class="flex justify-center text-center text-base text-white mb-3">
+					{webinarDateFormatted}
+				</div>
+			{:else}
+				<div class="mx-10 animate-pulse bg-[#0f477f] rounded-full flex space-x-4 h-5 mb-3" />
+			{/if}
+			<div class="flex flex-col justify-center text-center text-sm text-white">
+				Can't make it{webinarDate ? ' on ' + months[webinarDate.getMonth()] : ''}
+				{webinarDate ? webinarDate.getDate() : ''}?
+				<a href="/" class="underline">Check out other dates!</a>
+			</div>
 			<hr
 				class="mx-10 my-5"
 				style="height:1px;border:none;color:#d5d5d5;background-color:#d5d5d5;"
 			/>
 			<form method="POST" class="flex flex-col items-center">
 				<div class="grid w-full gap-5">
-					<div class="table relative mx-4">
+					<div class="table relative mx-2">
 						<input
 							bind:value={first_name}
 							class="table-cell w-full lg:p-3 p-3 lg:h-9 h-8 border rounded-md text-[#333333]"
@@ -202,7 +284,7 @@
 						{/if}
 					</div>
 
-					<div class="table relative mx-4">
+					<div class="table relative mx-2">
 						<input
 							bind:value={last_name}
 							class="table-cell w-full lg:p-3 p-3 lg:h-9 h-8 border rounded-md text-[#333333]"
@@ -218,7 +300,7 @@
 						{/if}
 					</div>
 
-					<div class="table relative mx-4">
+					<div class="table relative mx-2">
 						<input
 							bind:value={email}
 							class="table-cell w-full lg:p-3 p-3 lg:h-9 h-8 border rounded-md text-[#333333]"
@@ -236,7 +318,7 @@
 
 					<input
 						bind:value={phone}
-						class="block lg:h-9 h-8 border rounded-md lg:p-3 p-3 mx-4 text-[#333333]"
+						class="block lg:h-9 h-8 border rounded-md lg:p-3 p-3 mx-2 text-[#333333]"
 						type="text"
 						name="phone"
 						id="phone"
@@ -255,7 +337,7 @@
 						type="button"
 						on:click={submitRegistration}>SUBMIT</button
 					>
-					<span class="text-center lg:text-base text-white text-xs mx-5 lg:mx-16"
+					<span class="text-center lg:text-base text-xs mx-2 mt-2 text-neutral-300"
 						>If you need to make changes to your reservation, please call our offices at (201)
 						380-2000.</span
 					>
@@ -263,4 +345,12 @@
 			</form>
 		</ul>
 	</div>
+</div>
+
+<div class="flex items-center justify-center m-10">
+	<button
+		on:click={() => goto('/')}
+		class="border-plava border-4 rounded-md py-2 px-3 text-plava font-bold hover:text-white hover:bg-plava transition-all"
+		>Go back</button
+	>
 </div>
