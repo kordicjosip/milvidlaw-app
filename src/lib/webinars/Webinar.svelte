@@ -123,7 +123,9 @@
 </script>
 
 <div
-	class="relative flex flex-col rounded-md w-[22rem] lg:w-[43rem] bg-white border-l-[6px] {webinarType} border border-neutral-400"
+	on:click={() =>
+		goto(`/${webinarRoute}?webinar_id=${webinarData.id}&schedule=${webinarData.schedule}`)}
+	class="cursor-pointer relative flex flex-col rounded-md w-[22rem] lg:w-[43rem] bg-white border-l-[6px] {webinarType} border border-neutral-400"
 >
 	<div
 		id="Webinar header"
