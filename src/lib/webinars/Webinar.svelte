@@ -165,7 +165,7 @@
 					goto(`/${webinarRoute}?webinar_id=${webinarData.id}&schedule=${webinarData.schedule}`)}
 				aria-expanded={isOpen}
 			>
-				Save Your Seat
+				Learn More
 			</button>
 		</div>
 		<div class="absolute block lg:hidden bottom-0 right-0">
@@ -174,7 +174,7 @@
 				on:click={() =>
 					goto(`/${webinarRoute}?webinar_id=${webinarData.id}&schedule=${webinarData.schedule}`)}
 			>
-				Save Your Seat
+				Learn More
 			</button>
 		</div>
 	</div>
