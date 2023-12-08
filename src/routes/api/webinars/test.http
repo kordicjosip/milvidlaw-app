@@ -1,12 +1,1 @@
-GET https://api.lawmatics.com/v1/custom_fields
-Authorization: Bearer fltZZ1DoC44K2s2wSXVcU_nOf-XjGadcfv52OgUYgs0
 
-Accept: application/json
-
-###
-POST https://api.webinarjam.com/everwebinar/register
-
-
-{"api_key":"902faaf6-2cfc-4a3f-85c4-87851b3e7b50","webinar_id":"710","schedule":"1557","first_name":"Test","last_name":"Test","phone":"+38763266577","email":"josip.kordic6@gmail.com"}
-
-###
